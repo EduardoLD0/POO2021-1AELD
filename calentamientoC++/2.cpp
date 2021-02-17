@@ -1,6 +1,7 @@
 #include <iostream>
+using namespace std;
 /*Realice un programa que lea los siguientes datos de una persona: Edad: dato de tipo entero. Sexo: dato de tipo caracter.  Altura en metros: dato de tipo flotante. Muestre los datos leidos.  Desarrolle su programa usando funciones.  */
-void mostrarDatos( int edad, char sexo[1], float altura ){
+void mostrarDatos( int edad, string sexo, float altura ){
    std::cout << "Su edad es: " << edad << std::endl;
    std::cout << "Su sexo es: " << sexo << std::endl;
    std::cout << "Su altura es: " << altura << std::endl;
@@ -8,7 +9,7 @@ void mostrarDatos( int edad, char sexo[1], float altura ){
 
 int main(){
    int edad;
-   char sexo[1];
+   string sexo;
    float altura;
    std::cout << "Ingrese su edad" << std::endl;
    std::cin >> edad;
