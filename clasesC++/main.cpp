@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 class Rectangulo
 {
 private:
@@ -35,7 +37,7 @@ Rectangulo::Rectangulo(float largo, float ancho)
     //Todo lo que tenga que inicializar
     this->largo = largo;
     this->ancho = ancho;
-    std::cout << "Entre y me cree" << std::endl;
+    cout << "Entre y me cree" << endl;
 }
 
 // Ejemplo de constructor con tres arametros. Busca ilustrar qe puedo tener varios contructores
@@ -47,7 +49,7 @@ Rectangulo::Rectangulo(float largo, float ancho, float pepito)
     this->largo = largo;
     this->ancho = ancho;
     this->pepito = pepito;
-    std::cout << "Entre y me cree" << std::endl
+    cout << "Entre y me cree" << endl
               << "el valor de pepito es " << pepito;
 }
 
@@ -68,41 +70,80 @@ void Rectangulo::calcularPerimetro()
     float perimetro; // variable local
     perimetro = (2 * largo) + (2 * ancho);
     pepito++;
-    std::cout << "El perimetro es: " << perimetro << std::endl;
+    cout << "El perimetro es: " << perimetro << endl;
 }
 
 void Rectangulo::calcularArea()
 {
     float area;           // variable local
     area = largo * ancho; // son variables de instancia
-    std::cout << "El area es: " << area << std::endl;
+    cout << "El area es: " << area << endl;
+}
+
+class Circulo{
+   private:
+      float radio;
+      const float PI = 3.14159265;
+   public:
+      Circulo(float); // constructor
+      void calcularArea(); // PI*r^2
+      void calcularPerimetro(); // 2*PI*r
+      float getRadio();
+};
+
+Circulo::Circulo( float radio ){
+   this->radio = radio;
+   cout << "Circulo de radio " << radio << " creado" << endl;
+}
+
+void Circulo::calcularArea(){
+   float area = PI * radio * radio;
+   cout << "El area es: " << area << endl;
+}
+
+void Circulo::calcularPerimetro(){
+   float perimetro = 2 * PI * radio;
+   cout << "El perimetro es: " << perimetro << endl;
+}
+
+float Circulo::getRadio(){
+   return this->radio;
 }
 
 int main()
 {
-    //Instanciar --> crear objetos de una clase
-    int valor;
+   /*//Instanciar --> crear objetos de una clase
+   int valor;
 
-    ///Mi primer objeto
-    Rectangulo miRectangulo(2, 2); // sobrecarga....
-    //calculo el area
-    miRectangulo.calcularArea();
+   ///Mi primer objeto
+   Rectangulo miRectangulo(2, 2); // sobrecarga....
+   //calculo el area
+   miRectangulo.calcularArea();
 
-    // Cambio el largo a otro valor
-    miRectangulo.setLargo(50);
+   // Cambio el largo a otro valor
+   miRectangulo.setLargo(50);
 
-    // Calculo el área
-    miRectangulo.calcularArea();
+   // Calculo el área
+   miRectangulo.calcularArea();
 
-    std::cout << "El largo es " << miRectangulo.getLargo();
+   std::cout << "El largo es " << miRectangulo.getLargo();
 
-    // std::cout << "Con el nuevo objeto, miren pues cambian los valores" << std::endl;
-    Rectangulo miRectanguloNuevo(1, 5);
-    miRectanguloNuevo.calcularArea();
-    //calcular el perimetro
-    //miRectangulo.calcularPerimetro();
+   // std::cout << "Con el nuevo objeto, miren pues cambian los valores" <<std::endl;
+   Rectangulo miRectanguloNuevo(1, 5);
+   miRectanguloNuevo.calcularArea();
+   //calcular el perimetro
+   //miRectangulo.calcularPerimetro();
 
-    // Mi segundo objeto
-    Rectangulo miRectangulo1(3, 3, 3);
-    return 0;
+   // Mi segundo objeto
+   Rectangulo miRectangulo1(3, 3, 3); */
+    
+   Circulo circuloChiquito( 3 );
+   circuloChiquito.calcularArea();
+   circuloChiquito.calcularPerimetro();
+    
+   Circulo circuloGrande( 12 );
+   circuloGrande.calcularArea();
+   circuloGrande.calcularPerimetro();
+   
+   return 0;
 }
