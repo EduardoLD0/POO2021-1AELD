@@ -2,6 +2,8 @@
 
 using namespace std;
 
+const int CAP = 10;
+
 class Rectangulo
 {
 private:
@@ -10,12 +12,15 @@ private:
     float largo, ancho, pepito; // variables de instancia o atributos de instancia
 
 public:
+    Rectangulo();
     Rectangulo(float, float); //Constructor
     Rectangulo(float, float, float);
     void calcularPerimetro();
     void calcularArea();
     float getLargo();     // Me permite ver el largo de un rectangulo
     void setLargo(float); // Me permite cambiar el valor del largo.
+    float getAncho();
+    void setAncho(float);
 };
 
 /*
@@ -28,6 +33,10 @@ Rectangulo::Rectangulo(float largo1, float ancho1)
     ancho = ancho1;
     std::cout << "Entre y me cree" << std::endl;
 }*/
+
+Rectangulo::Rectangulo(){
+	
+}
 
 // Versión favorita :), usa el operador this para diferenciar las
 // variables de instancia de las variables locales que tienen el mismo nombre
@@ -60,9 +69,17 @@ void Rectangulo::setLargo(float largo)
     this->largo = largo;
 }
 
+void Rectangulo::setAncho( float ancho ){
+   this->ancho = ancho;
+}
+
 float Rectangulo::getLargo()
 {
     return this->largo;
+}
+
+float Rectangulo::getAncho(){
+   return this->ancho;
 }
 
 void Rectangulo::calcularPerimetro()
@@ -86,10 +103,16 @@ class Circulo{
       const float PI = 3.14159265;
    public:
       Circulo(float); // constructor
+	 Circulo();
       void calcularArea(); // PI*r^2
       void calcularPerimetro(); // 2*PI*r
       float getRadio();
+      void setRadio(float);
 };
+
+Circulo::Circulo(){
+	
+}
 
 Circulo::Circulo( float radio ){
    this->radio = radio;
@@ -108,6 +131,10 @@ void Circulo::calcularPerimetro(){
 
 float Circulo::getRadio(){
    return this->radio;
+}
+
+void Circulo::setRadio( float radio ){
+   this->radio = radio;
 }
 
 int main()
@@ -137,13 +164,71 @@ int main()
    // Mi segundo objeto
    Rectangulo miRectangulo1(3, 3, 3); */
     
-   Circulo circuloChiquito( 3 );
+   /*Circulo circuloChiquito( 3 );
    circuloChiquito.calcularArea();
    circuloChiquito.calcularPerimetro();
     
    Circulo circuloGrande( 12 );
    circuloGrande.calcularArea();
-   circuloGrande.calcularPerimetro();
-   
+   circuloGrande.calcularPerimetro();*/
+   int opcion = 1, posRectangulos = 0, posCirculos = 0, i;
+   float radioTemp = 0, largoTemp = 0, anchoTemp = 0;
+   Rectangulo arregloRectangulos[CAP];
+   Circulo arregloCirculos[CAP];
+   while( opcion != 0 ){
+      cout << "Menu de creacion de figuras" << endl;
+      cout << "1. Crear figura" << endl;
+      cout << "2. Ver figuras" << endl;
+      cout << "0. Salir" << endl;
+      cin >> opcion;
+      switch( opcion ){
+         case 0:
+            break;
+         case 1:
+            cout << "1. Crear rectangulo" << endl;
+            cout << "2. Crear circulo" << endl;
+            cin >> opcion;
+            if( opcion == 1 && posRectangulos == 10 ){
+               cout << "Error. El arreglo de rectangulos esta lleno." << endl;
+            }
+            else if( opcion == 1 ){
+               cout << "Ingrese el ancho" << endl;
+               cin >> anchoTemp;
+               arregloRectangulos[posRectangulos].setAncho(anchoTemp);
+               cout << "Ingrese el largo" << endl;
+               cin >> largoTemp;
+               arregloRectangulos[posRectangulos].setLargo(largoTemp);
+               posRectangulos++;
+            }
+            else if( opcion == 2 && posCirculos == 10 ){
+               cout << "Error. El arreglo de circulos esta lleno." << endl;
+            }
+            else if( opcion == 2 ){
+               cout << "Ingrese el radio" << endl;
+               cin >> radioTemp;
+               arregloCirculos[posCirculos].setRadio(radioTemp);
+               posCirculos++;
+            }
+            else{
+               cout << "Error. Opcion no disponible." << endl;
+            }
+		  break;
+         case 2:
+            cout << "Lista de rectangulos: " << endl << endl;
+            for( i = 0; i < posRectangulos; i++ ){
+               cout << "Rectangulo #" << i << endl;
+               cout << "Largo: " << arregloRectangulos[i].getLargo() << endl;
+               cout << "Ancho: " << arregloRectangulos[i].getAncho() << endl << endl;
+            }
+            cout << "Lista de circulos: " << endl << endl;
+            for( i = 0; i < posCirculos; i++ ){
+               cout << "Circulo #" << i << endl;
+               cout << "Radio: " << arregloCirculos[i].getRadio() << endl << endl;
+            }
+		  break;
+	    default:
+	       cout << "Error. Opcion no disponible" << endl;
+      }
+   }
    return 0;
 }
