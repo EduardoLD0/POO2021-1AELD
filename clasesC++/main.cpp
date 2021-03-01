@@ -310,12 +310,18 @@ int main()
             for( i = 0; i < posRectangulos; i++ ){
                cout << "Rectangulo #" << i << endl;
                cout << "Largo: " << arregloRectangulos[i].getLargo() << endl;
-               cout << "Ancho: " << arregloRectangulos[i].getAncho() << endl << endl;
+               cout << "Ancho: " << arregloRectangulos[i].getAncho() << endl;
+			arregloRectangulos[i].calcularPerimetro();
+			arregloRectangulos[i].calcularArea();
+			cout << endl;
             }
             cout << "Lista de circulos: " << endl << endl;
             for( i = 0; i < posCirculos; i++ ){
                cout << "Circulo #" << i << endl;
-               cout << "Radio: " << arregloCirculos[i].getRadio() << endl << endl;
+               cout << "Radio: " << arregloCirculos[i].getRadio() << endl;
+			arregloCirculos[i].calcularPerimetro();
+			arregloCirculos[i].calcularArea();
+			cout << endl;
             }
 		  cout << "Lista de triangulos: " << endl << endl;
             for( i = 0; i < posTriangulos; i++ ){
@@ -323,7 +329,10 @@ int main()
                cout << "Base: " << arregloTriangulos[i].getBase() << endl;
 			cout << "Altura: " << arregloTriangulos[i].getAltura() << endl;
 			cout << "Lado Izquierdo: " << arregloTriangulos[i].getLadoIzq() << endl;
-			cout << "Lado Derecho: " << arregloTriangulos[i].getLadoDer() << endl << endl;
+			cout << "Lado Derecho: " << arregloTriangulos[i].getLadoDer() << endl;
+			arregloTriangulos[i].calcularPerimetro();
+			arregloTriangulos[i].calcularArea();
+			cout << endl;
             }
 		  break;
 	    default:
