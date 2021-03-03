@@ -12,23 +12,7 @@ Rectangulo::Rectangulo(float largo, float ancho)
 	//Todo lo que tenga que inicializar
 	this->largo = largo;
 	this->ancho = ancho;
-	cout << "Entre y me cree" << endl;
 }
-
-// Ejemplo de constructor con tres arametros. Busca ilustrar qe puedo tener varios contructores
-// si cambio el número de parametros o el tipo de datos entre los parametros
-Rectangulo::Rectangulo(float largo, float ancho, float pepito)
-{
-	// Inicializar las varibles de instancia.
-	//Todo lo que tenga que inicializar
-	this->largo = largo;
-	this->ancho = ancho;
-	this->pepito = pepito;
-	cout << "Entre y me cree" << endl
-			  << "el valor de pepito es " << pepito;
-}
-
-// TO-DO pedir los datos al usuario.
 
 void Rectangulo::setLargo(float largo)
 {
