@@ -12,9 +12,18 @@ void View::pedirDatosRectangulo()
         cout << "Digite el valor del ancho " << endl;
         cin >> ancho;
     } while (largo <= 0 || ancho <= 0);
+    // Si el usuario digita un rectangulo con el largo y ancho igual se tomara como un cuadrado
+    if(largo == ancho)
+    {
+	   cout << "El largo y el ancho son el mismo. Se tomara como un cuadrado" << endl;
+	   controller.agregarCuadrado(largo);
+    }
+    else
+    {
+		// Se llama al metodo del controller
+		controller.agregarRectangulo(largo, ancho);
+    }
 
-    // Se llama al metodo del controller
-    controller.agregarRectangulo(largo, ancho);
 }
 
 void View::pedirDatosCirculo()
