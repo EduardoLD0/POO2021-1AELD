@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/eduar/Downloads/casino/Model/Casino.cpp
+Casino.h
+C:/Users/eduar/Downloads/casino/Model/Casino.h
+
+C:/Users/eduar/Downloads/casino/Model/Casino.h
+iostream
+-
+string
+-
+vector
+-
+map
+-
+Juego.h
+C:/Users/eduar/Downloads/casino/Model/Juego.h
+
+C:/Users/eduar/Downloads/casino/Model/Juego.h
+Jugador.h
+C:/Users/eduar/Downloads/casino/Model/Jugador.h
+
+C:/Users/eduar/Downloads/casino/Model/Jugador.h
+iostream
+-
+string
+-
+
