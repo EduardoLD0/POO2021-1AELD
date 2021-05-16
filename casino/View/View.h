@@ -18,7 +18,7 @@ private:
     void agregarJugador();
     void retirarJugador();
     void mostrarJugador();
-
+    void recargarGonzos();
 public:
     View();
     void verPrincipal();

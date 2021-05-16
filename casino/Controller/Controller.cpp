@@ -78,10 +78,19 @@ bool Controller::verPuedeContinuar(int idJugador) {
 }
 
 void Controller::retirarJugador(long idJugador) {
-    cout << "Fase dos, por hacer \n";
+    casino.retirarJugador(idJugador);
 }
 
 void Controller::recargarGonzos(long idJugador) {
-    cout << "Fase dos, por hacer \n";
+    if (casino.verExisteJugador(idJugador) == false){
+        throw std::domain_error("El jugador con la identificacion recibida NO existe\n");
+    }
+    float gonzos;
+    Jugador * pJugador = casino.consultarJugador(idJugador);
+    do{
+        cout << "Ingrese la cantidad de gonzos a recargar: ";
+        cin >> gonzos;
+    } while(gonzos < 0);
+    pJugador->actualizarGonzos(gonzos);
 }
 

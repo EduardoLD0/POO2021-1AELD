@@ -7,6 +7,7 @@
 View::View(){
     controller = Controller();
 }
+
 void View::agregarJugador()
 {
     string nombreJugador;
@@ -32,7 +33,6 @@ void View::agregarJugador()
         cout << "ERROR: " << ex.what();
     }
 }
-
 
 void View::pedirUsuario(){
     try {
@@ -78,7 +78,7 @@ void View:: jugarView(long idJugador) {
     }
     else
     {
-        cout << "Haz perdido :C" << endl;
+        cout << "Haz perdido :C" << std::endl;
     }
 }
 
@@ -90,6 +90,7 @@ int View::mostrarMenu()
     cout << "2. Jugar" << std::endl;
     cout << "3. Consultar jugador - pendiente " << std::endl;
     cout << "4. Vender gonzos - pendiente " << std::endl;
+    cout << "5. Retirar jugador " << std::endl;
     cout << "0. Salir\n"
          << std::endl;
     cout << "Digita el numero: ";
@@ -110,16 +111,55 @@ void View::verPrincipal()
             case 2:
                 pedirUsuario();
                 break;
+            case 3:
+                mostrarJugador();
+                break;
+            case 4:
+                recargarGonzos();
+                break;
+            case 5:
+                retirarJugador();
+                break;
         }
     } while (opcion != 0);
 }
 
 void View::mostrarJugador() {
-    // LLama al metodo del controller que muestra los datos
-    cout << "Fase dos, por hacer \n";
+    long idJugador;
+    try {
+        cout << "Ingrese el id del jugador: ";
+        cin >> idJugador;
+        controller.verInfoJugador(idJugador);
+    } catch (std::domain_error ex){
+        // Se muestra un error si el usuario no existe
+        cout << ex.what();
+    }
 }
 
 void View::retirarJugador() {
-    cout << "Fase dos, por hacer \n";
+    long idJugador;
+    try {
+        cout << "Ingrese el id del jugador: ";
+        cin >> idJugador;
+        controller.verInfoJugador(idJugador);
+        controller.retirarJugador(idJugador);
+        cout << "Jugador retirado con exito." << std::endl;
+    } catch (std::domain_error ex){
+        // Se muestra un error si el usuario no existe
+        cout << ex.what();
+    }
 }
 
+void View::recargarGonzos()
+{
+    long idJugador;
+    try {
+        cout << "Ingrese el id del jugador: ";
+        cin >> idJugador;
+        controller.recargarGonzos(idJugador);
+        cout << "Recarga realizada con exito." << std::endl;
+    } catch (std::domain_error ex){
+        // Se muestra un error si el usuario no existe
+        cout << ex.what();
+    }
+}
