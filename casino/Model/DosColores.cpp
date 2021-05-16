@@ -8,13 +8,25 @@ float DosColores::jugar(float gonzosApostar) {
     float gonzosResultado;
     srand(time(NULL));
     // para calcular numero aleatorio variable = limite_inferior + rand() % (limite_superior +1 - limite_inferior) ;
-    numeroJugador = 1+rand()%14;// numeros de 1 a 13
-    numeroCasino = 1+rand()%14;// numeros de 1 a 13
-
-    colorJugador = rand()%2; // Numero entre 0 y 1
+    numeroJugador = 1+rand()%6;// numeros de 1 a 13
+    numeroCasino = 1+rand()%6;// numeros de 1 a 13
     colorCasino = rand()%2; // Numero entre 0 y 1
-    cout << "Tu numero aleatorio es: "<< numeroJugador <<"\n" << "Tu color: " <<colorJugador << "\n";
-    cout << "Numero casino: "<< numeroCasino <<"\n" << "Color casino: " <<colorCasino << "\n";
+    cout << "Tu numero aleatorio es: "<< numeroJugador << endl;
+    cout << "Elije un color: " << endl;
+    cout << "1. Blanco" << endl;
+    cout << "2. Negro" << endl;
+    cin >> colorJugador;
+    --colorJugador; // Se ajusta el valor del color
+    cout << "Numero casino: "<< numeroCasino << endl;
+    cout << "Color casino: ";
+    if(colorCasino == 0)
+    {
+        cout << "Blanco." << endl;
+    }
+    else
+    {
+        cout << "Negro." << endl;
+    }
     gonzosResultado = calcularResultado(gonzosApostar);
     return gonzosResultado;
 }

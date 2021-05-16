@@ -35,7 +35,7 @@ void Jugador::aumentarJuegos() {
 }
 
 void Jugador::actualizarGonzos(float resultadoJuego) {
-    this->cantGonzos = resultadoJuego;
+    this->cantGonzos += resultadoJuego;
 }
 
 const string &Jugador::getNombre() const {
