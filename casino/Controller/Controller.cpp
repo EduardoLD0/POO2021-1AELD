@@ -36,7 +36,7 @@ bool Controller::jugar(int idJuego, long idJugador, float gonzosApostar) {
     if (idJuego > casino.consultarJuegos().size()){
         throw std::domain_error("NO existe el juego que desea jugar\n");
     }
-    if (verPuedeContinuar(idJugador)== false){
+    if (verPuedeContinuar(idJugador, gonzosApostar)== false){
         throw std::domain_error("No tienes saldo suficiente para jugar\n");
     }
     // Si no hay errores se inicia el juego
@@ -65,13 +65,13 @@ void Controller::verInfoJugador(long idJugador){
     pJugador->mostrarInfo();
 }
 
-bool Controller::verPuedeContinuar(int idJugador) {
+bool Controller::verPuedeContinuar(int idJugador, float gonzosApostar) {
     // En teoría esta excepción no debería salir nunca pero se pone como táctica de programación segura.
     if (casino.verExisteJugador(idJugador) == false) {
         throw std::domain_error("El jugador con la identificacion recibida NO existe");
     }
     Jugador *pJugador = casino.consultarJugador(idJugador);
-    if (pJugador->getCantGonzos() == 0) {
+    if (pJugador->getCantGonzos() < gonzosApostar) {
         return false;
     }
     return true;

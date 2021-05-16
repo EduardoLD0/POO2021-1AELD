@@ -29,7 +29,7 @@ public:
     Controller();
     void agregarJugador(long id, string nombreJugador, double dinero);
     bool jugar(int idJuego, long idJugador, float gonzosApostar);
-    bool verPuedeContinuar(int idJugador); // True si tiene saldo para jugar, false en caso contrario
+    bool verPuedeContinuar(int idJugador, float gonzosApostar); // True si tiene saldo para jugar, false en caso contrario
     void verInfoJugador(long idJugador);
     void retirarJugador(long idJugador);
     void recargarGonzos(long idJugador);
