@@ -54,7 +54,6 @@ void View:: jugarView(long idJugador) {
     int opcion, resultado;
     float cantGonzos;
     int idJuego;
-    do{
         try {
             do {
                 cout << "Cuantos gonzos desea apostar \n";
@@ -65,12 +64,12 @@ void View:: jugarView(long idJugador) {
             cout << "Elija el juego: " << endl;
             cout << "1. Mayor a 13." << endl;
             cout << "2. Dos colores." << endl;
+            cout << "3. Slots." << endl;
             cout << "Opcion: ";
             cin >> opcion;
         } catch (std::domain_error ex){
             cout << ex.what();
         }
-    }while (opcion < 1 || opcion > 2);
     resultado = controller.jugar(opcion, idJugador, cantGonzos);
     if(resultado)
     {
