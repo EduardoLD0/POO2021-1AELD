@@ -27,6 +27,9 @@ public:
 	void generarPocion();
 	void generarArma();
 	void actualizarItem();
+	void agregarArmaLista(Arma*);
+	void agregarPocionLista(Pocion*);
+	void agregarEnemigoLista(Enemigo*);
 };
 
 #endif

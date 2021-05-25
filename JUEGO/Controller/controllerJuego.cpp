@@ -11,7 +11,6 @@ ControllerJuego::ControllerJuego(): mazmorra(nivel::normal)
 	listaPociones.push_back(pocion2);
 	listaArmas.push_back(arma);
 	listaArmas.push_back(arma2);
-	
 }
 
 void ControllerJuego::generarPocion()
