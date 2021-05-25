@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <list>
+#include <ctime>
 #include "arma.h"
 #include "posicion.h"
 

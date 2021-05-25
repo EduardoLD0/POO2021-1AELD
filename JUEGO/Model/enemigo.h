@@ -12,6 +12,7 @@ private:
 public:
 	Enemigo(int, int);
 	void agregarAtaque(Ataque *);
+	Ataque *seleccionarAtaque();
 };
 
 #endif
