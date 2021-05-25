@@ -21,7 +21,7 @@ private:
 	list<Enemigo*> listaEnemigos;
 	map<Pocion*, Posicion*> listaPocionesSuelo;
 	map<Arma*, Posicion*> listaArmasSuelo;
-	int contadorCombate, contadorTurno;
+	int contadorCombate;
 public:
 	ControllerJuego();
 	void generarPocion();
