@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-enum tipoItem
+enum class tipoItem
 { 
 	arma = 0,
 	pocion = 1
@@ -16,8 +16,8 @@ protected:
 	tipoItem tipo;
 public:
 	~Item();
-	virtual tipoItem getTipo() = 0;
-	virtual void setTipo(tipoItem) = 0;
+	tipoItem getTipo();
+	void setTipo(tipoItem);
 };
 
 #endif
