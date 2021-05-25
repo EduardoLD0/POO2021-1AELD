@@ -16,7 +16,6 @@ protected:
 	int ataqueBase;
 	Posicion posicion;
 	Arma* arma;
-	bool turno;
 public:
 	Character();
 	void setVida(int);
@@ -24,6 +23,7 @@ public:
 	void setAtaqueBase(int);
 	int  getAtaqueBase();
 	void setPosicion(Posicion);
+	Arma& getArma();
 	Posicion getPosicion();
 };
 #endif 
