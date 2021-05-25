@@ -8,6 +8,6 @@ class PocionVida : public Pocion
 {
 public:
 	void aplicarEfecto(Character) override;
-}
+};
 
 #endif

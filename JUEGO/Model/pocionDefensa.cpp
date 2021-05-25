@@ -7,7 +7,6 @@ PocionDefensa::~PocionDefensa()
 
 void PocionDefensa::aplicarEfecto(Character dummy)
 {
-	int cambioResistencia = dummy.getResistencia() + 5; // Valor temporal
-	dummy.setResistencia(cambioResistencia);
-	~PocionDefensa();
+	int cambioResistencia = dummy.getArma().getResistencia() + 5; // Valor temporal
+	dummy.getArma().setResistencia(cambioResistencia);
 }

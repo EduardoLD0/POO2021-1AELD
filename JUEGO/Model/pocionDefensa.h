@@ -7,6 +7,6 @@ class PocionDefensa : public Pocion
 {
 public:
 	void aplicarEfecto(Character) override;
-}
+};
 
-#endif 
+#endif

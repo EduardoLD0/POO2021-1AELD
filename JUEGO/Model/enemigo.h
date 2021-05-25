@@ -10,7 +10,7 @@ class Enemigo : public Character
 private:
 	list<Ataque *> listaAtaqueEnemigos;
 public:
-	Enemigo(int, int);
+	Enemigo(Arma*, int, list<Ataque*>, int);
 	void agregarAtaque(Ataque *);
 	Ataque *seleccionarAtaque();
 };

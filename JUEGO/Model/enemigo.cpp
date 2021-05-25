@@ -1,10 +1,12 @@
 #include "enemigo.h"
 
 
-Enemigo::Enemigo(int vida, int ataqueBase) 
+Enemigo::Enemigo(Arma* arma, int vida, list<Ataque*>listaAtaques, int ataqueBase) 
 {
+	this->arma = arma;
 	this->vida = vida;
 	this->ataqueBase = ataqueBase;
+	this->listaAtaqueEnemigos = listaAtaques;
 }
 
 void Enemigo::agregarAtaque(Ataque *ataque)

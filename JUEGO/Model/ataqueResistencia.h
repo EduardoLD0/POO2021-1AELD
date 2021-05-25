@@ -7,7 +7,7 @@
 class AtaqueResistencia : public Ataque
 {
 public:
-	void aplicarEfecto(Character);
+	void aplicarEfecto(Character*);
 };
 
 #endif

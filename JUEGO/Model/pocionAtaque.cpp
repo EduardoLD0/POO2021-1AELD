@@ -7,7 +7,6 @@ PocionAtaque::~PocionAtaque()
 
 void PocionAtaque::aplicarEfecto(Character dummy)
 {
-	int cambioAtaque = dummy.getAtaque() + 5; // Valor temporal
-	dummy.setAtaque(cambioAtaque);
-	~PocionAtaque();
+	int cambioAtaque = dummy.getAtaqueBase() + 5; // Valor temporal
+	dummy.setAtaqueBase(cambioAtaque);
 }

@@ -1,7 +1,7 @@
 #include "ataqueCuracion.h"
 
-void ataqueCuracion::aplicarEfecto(Character dummy)
+void AtaqueCuracion::aplicarEfecto(Character* dummy)
 {
-	int cambioVida = dummy.getVida() + 5; // Valor temporal
-	dummy.setVida(cambioVida);
+	int cambioVida = dummy->getVida() + 5; // Valor temporal
+	dummy->setVida(cambioVida);
 }
