@@ -11,15 +11,13 @@
 class Heroe : public Character 
 {
 private:
-	list<Item> listaItemInv;
+	list<Item*> listaItemInv;
 public:
 	Heroe();
-	void usarPocion(Pocion);
-	void seleccionarArma(Arma);
-	void recogerItem(Item);
-	void botarItem(Item);
-	bool revisarPociones();
-	Arma &getArma();
-	
+	void usarPocion(Pocion*);
+	void seleccionarArma(Arma*);
+	void recogerItem(Item*);
+	bool revisarItem(tipoItem);
+	void eliminarItemLista(Item*);
 };
 #endif
