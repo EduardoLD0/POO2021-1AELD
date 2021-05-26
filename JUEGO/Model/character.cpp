@@ -35,5 +35,5 @@ Posicion Character::getPosicion()
 
 Arma& Character::getArma()
 {
-	return *arma;
+	return arma;
 }

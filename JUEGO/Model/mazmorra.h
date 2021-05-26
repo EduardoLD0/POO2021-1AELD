@@ -19,8 +19,7 @@ class Mazmorra
 {
 private:
 	int tamano, cantidadEnemigos;
-	bool puerta;
-	Posicion artefacto, personaje;
+	bool artefactoEncontrado;
 	list<Posicion*> matriz;
 	nivel nivelMazmorra;
 public:
@@ -30,5 +29,6 @@ public:
 	void agregarEnemigos();
 	Posicion * agregarItem(tipoItem);
 	void pintar();
+	void agregarObjeto(tipoElemento);
 };
 #endif

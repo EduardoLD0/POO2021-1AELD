@@ -5,6 +5,7 @@
 #include "pocion.h"
 #include "item.h"
 #include "arma.h"
+#include "ataque.h"
 #include <list>
 
 
@@ -15,9 +16,10 @@ private:
 public:
 	Heroe();
 	void usarPocion(Pocion*);
-	void seleccionarArma(Arma*);
+	void setArma(Arma);
 	void recogerItem(Item*);
 	bool revisarItem(tipoItem);
 	void eliminarItemLista(Item*);
+	Ataque* seleccionarAtaque(int);
 };
 #endif

@@ -1,9 +1,8 @@
 #include "controllerInicializador.h"
 
-Mazmorra* ControllerInicializador::crearMazmorra(nivel nivel)
+ControllerInicializador::ControllerInicializador(nivel nivelMazmorra) : mazmorra(nivelMazmorra)
 {
-	Mazmorra* mazmorra = new Mazmorra(nivel);
-	return mazmorra;
+
 }
 
 Arma* ControllerInicializador::crearBaston(int resistencia, int puntosAtaque)
@@ -18,26 +17,31 @@ Arma* ControllerInicializador::crearEspada(int resistencia, int puntosAtaque)
 	return espada;
 }
 
-Character* ControllerInicializador::crearGuerrero(Arma* arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
+Character* ControllerInicializador::crearGuerrero(Arma arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
 {
 	Enemigo* guerrero = new Enemigo(arma, puntosVida, listaAtaques, ataqueBase);
 	return guerrero;
 }
 
-Character* ControllerInicializador::crearGuerreroBoss(Arma* arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
+Character* ControllerInicializador::crearGuerreroBoss(Arma arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
 {
 	Enemigo* guerreroBoss = new Enemigo(arma, puntosVida, listaAtaques, ataqueBase);
 	return guerreroBoss;
 }
 
-Character* ControllerInicializador::crearMago(Arma* arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
+Character* ControllerInicializador::crearMago(Arma arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
 {
 	Enemigo* mago = new Enemigo(arma, puntosVida, listaAtaques, ataqueBase);
 	return mago;
 }
 
-Character* ControllerInicializador::crearMagoBoss(Arma* arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
+Character* ControllerInicializador::crearMagoBoss(Arma arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
 {
 	Enemigo* magoBoss = new Enemigo(arma, puntosVida, listaAtaques, ataqueBase);
 	return magoBoss;
+}
+
+Mazmorra& ControllerInicializador::getMazmorra()
+{
+	return this->mazmorra;
 }

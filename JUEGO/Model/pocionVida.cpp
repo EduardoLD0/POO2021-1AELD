@@ -5,8 +5,8 @@ PocionVida::~PocionVida()
 
 }
 
-void PocionVida::aplicarEfecto(Character dummy)
+void PocionVida::aplicarEfecto(Character *dummy)
 {
-	int cambioVida = dummy.getVida() + 5; // Valor temporal
-	dummy.setVida(cambioVida);
+	int cambioVida = dummy->getVida() + 5; // Valor temporal
+	dummy->setVida(cambioVida);
 }

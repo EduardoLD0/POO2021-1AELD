@@ -9,14 +9,18 @@
 
 class ControllerInicializador
 {
+private:
+	Mazmorra mazmorra;
 public:
-	Mazmorra* crearMazmorra(nivel nivel);
+	ControllerInicializador(nivel);
 	Arma* crearBaston(int, int);
 	Arma* crearEspada(int, int);
-	Character* crearGuerrero(Arma*, int, list<Ataque*>, int);
-	Character* crearGuerreroBoss(Arma*, int, list<Ataque*>, int);
-	Character* crearMago(Arma*, int, list<Ataque*>, int);
-	Character* crearMagoBoss(Arma*, int, list<Ataque*>, int);
+	Character* crearGuerrero(Arma, int, list<Ataque*>, int);
+	Character* crearGuerreroBoss(Arma, int, list<Ataque*>, int);
+	Character* crearMago(Arma, int, list<Ataque*>, int);
+	Character* crearMagoBoss(Arma, int, list<Ataque*>, int);
+	Mazmorra& getMazmorra();
+	// Crear funcion crearEnemigo y llamar por medio de las otras funciones
 };
 
 #endif

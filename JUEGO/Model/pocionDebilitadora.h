@@ -6,7 +6,7 @@
 class PocionDebilitadora : public Pocion
 {
 public:
-	void aplicarEfecto(Character) override;
+	void aplicarEfecto(Character *) override;
 };
 
 #endif

@@ -1,10 +1,9 @@
 #include "controllerJuego.h"
 
-ControllerJuego::ControllerJuego(): mazmorra(nivel::normal)
+ControllerJuego::ControllerJuego(Mazmorra* mazmorra)
 {
+	this->mazmorra = mazmorra;
 	contadorCombate = 0;
-	mazmorra.generarLaberinto();
-	mazmorra.agregarEnemigos();
 	Pocion* pocion, *pocion2;
 	Arma* arma, * arma2;
 	listaPociones.push_back(pocion);
@@ -24,7 +23,7 @@ void ControllerJuego::generarPocion()
 	{
 		++it;
 	}
-	Posicion* pPocion = mazmorra.agregarItem(tipoItem::pocion);
+	Posicion* pPocion = mazmorra->agregarItem(tipoItem::pocion);
 	listaPocionesSuelo.insert(pair<Pocion*, Posicion*>((*it), pPocion));
 	pPocion->setTurnosSpawn(3);
 }
@@ -38,7 +37,7 @@ void ControllerJuego::generarArma()
 	{
 		++it;
 	}
-	Posicion* pArma = mazmorra.agregarItem(tipoItem::arma);
+	Posicion* pArma = mazmorra->agregarItem(tipoItem::arma);
 	listaArmasSuelo.insert(pair<Arma*, Posicion*>((*it), pArma));
 	pArma->setTurnosSpawn(3);
 }
@@ -76,15 +75,4 @@ void ControllerJuego::actualizarItem()
 			++it;
 		}
 	}
-	mazmorra.pintar();
-}
-
-int main()
-{
-	ControllerJuego controller;
-	controller.generarPocion();
-	controller.actualizarItem();
-	controller.actualizarItem();
-	controller.actualizarItem();
-	return 0;
 }

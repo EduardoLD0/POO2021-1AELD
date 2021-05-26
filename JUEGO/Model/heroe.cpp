@@ -2,10 +2,10 @@
 
 void Heroe::usarPocion(Pocion* pocion)
 {
-	//pocion->aplicarEfecto(); // Hay que hacer correccion
+	pocion->aplicarEfecto(dynamic_cast<Character *> (this));
 }
 
-void Heroe::seleccionarArma(Arma* arma)
+void Heroe::setArma(Arma arma)
 {
 	this->arma = arma;
 }
@@ -27,7 +27,18 @@ bool Heroe::revisarItem(tipoItem tipo)
 	return 0;
 }
 
- void Heroe::eliminarItemLista(Item* item)
- {
-	 listaItemInv.remove(item);
- }
+void Heroe::eliminarItemLista(Item* item)
+{
+	listaItemInv.remove(item);
+}
+
+Ataque* Heroe::seleccionarAtaque(int id)
+{
+	list<Ataque*>::iterator it = listaAtaques.begin();
+	int i;
+	for (i = 0; i < id; ++i)
+	{
+		++it;
+	}
+	return *it;
+}

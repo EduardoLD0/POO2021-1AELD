@@ -18,7 +18,7 @@ protected:
 	tipoEfecto tipo;
 public:
 	~Pocion();
-	virtual void aplicarEfecto(Character) = 0;
+	virtual void aplicarEfecto(Character *) = 0;
 };
 
 #endif

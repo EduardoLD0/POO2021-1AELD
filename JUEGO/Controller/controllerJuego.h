@@ -15,7 +15,7 @@ using namespace std;
 class ControllerJuego
 {
 private:
-	Mazmorra mazmorra;
+	Mazmorra* mazmorra;
 	list<Arma*> listaArmas;
 	list<Pocion*> listaPociones;
 	list<Enemigo*> listaEnemigos;
@@ -23,7 +23,7 @@ private:
 	map<Arma*, Posicion*> listaArmasSuelo;
 	int contadorCombate;
 public:
-	ControllerJuego();
+	ControllerJuego(Mazmorra*);
 	void generarPocion();
 	void generarArma();
 	void actualizarItem();

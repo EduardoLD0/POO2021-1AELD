@@ -9,7 +9,7 @@ Mazmorra::Mazmorra(nivel nivelMazmorra)
 		this->cantidadEnemigos = 10;
 		tamano = 15;
 	}
-	else if(nivelMazmorra == nivel::normal)
+	else
 	{
 		this->cantidadEnemigos = 25;
 		tamano = 15;
@@ -22,6 +22,11 @@ Mazmorra::Mazmorra(nivel nivelMazmorra)
 			matriz.push_back(pPosicion);
 		}
 	}
+	generarLaberinto();
+	agregarEnemigos();
+	agregarObjeto(tipoElemento::heroe);
+	agregarObjeto(tipoElemento::artefacto);
+	agregarObjeto(tipoElemento::puerta);
 }
 
 Posicion * Mazmorra::encontrarPosicion(int x, int y)
@@ -33,6 +38,7 @@ Posicion * Mazmorra::encontrarPosicion(int x, int y)
 			return *it;
 		}
 	}
+	return NULL;
 }
 
 void Mazmorra::generarLaberinto()
@@ -169,13 +175,14 @@ Posicion * Mazmorra::agregarItem(tipoItem item)
 	return pPosicion;
 }
 
-/*int main()
+void Mazmorra::agregarObjeto(tipoElemento elemento)
 {
-	Mazmorra mazmorra(nivel::normal);
-	mazmorra.generarLaberinto();
-	mazmorra.agregarEnemigos();
-	mazmorra.pintar();
-	mazmorra.agregarItem(tipoItem::arma);
-	mazmorra.pintar();
-	return 0;
-}*/
+	srand(time(NULL));
+	Posicion* pPosicion;
+	do
+	{
+		pPosicion = encontrarPosicion(rand() % tamano, rand() % tamano);
+	} while (pPosicion->getElemento() != tipoElemento::vacio);
+	pPosicion->setElemento(elemento);
+}
+

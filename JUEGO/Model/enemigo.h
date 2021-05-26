@@ -8,9 +8,9 @@
 class Enemigo : public Character
 {
 private:
-	list<Ataque *> listaAtaqueEnemigos;
+	
 public:
-	Enemigo(Arma*, int, list<Ataque*>, int);
+	Enemigo(Arma, int, list<Ataque*>, int);
 	void agregarAtaque(Ataque *);
 	Ataque *seleccionarAtaque();
 };

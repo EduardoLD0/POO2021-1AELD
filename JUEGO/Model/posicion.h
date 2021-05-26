@@ -11,7 +11,9 @@ enum class tipoElemento
 	boss = 3,
 	pocion = 4,
 	arma = 5,
-	artefacto = 6
+	artefacto = 6,
+	heroe = 7,
+	puerta = 8
 };
 
 class Posicion

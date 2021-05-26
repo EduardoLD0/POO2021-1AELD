@@ -6,6 +6,7 @@
 #include <ctime>
 #include "arma.h"
 #include "posicion.h"
+#include "ataque.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ protected:
 	int vida;	
 	int ataqueBase;
 	Posicion posicion;
-	Arma* arma;
+	Arma arma;
 public:
 	Character();
 	void setVida(int);

@@ -5,8 +5,8 @@ PocionAtaque::~PocionAtaque()
 
 }
 
-void PocionAtaque::aplicarEfecto(Character dummy)
+void PocionAtaque::aplicarEfecto(Character *dummy)
 {
-	int cambioAtaque = dummy.getAtaqueBase() + 5; // Valor temporal
-	dummy.setAtaqueBase(cambioAtaque);
+	int cambioAtaque = dummy->getAtaqueBase() + 5; // Valor temporal
+	dummy->setAtaqueBase(cambioAtaque);
 }

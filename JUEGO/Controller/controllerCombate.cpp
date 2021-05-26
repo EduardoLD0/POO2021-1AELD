@@ -1,36 +1,34 @@
 #include "controllerCombate.h"
 
-bool ControllerCombate::combatir(Heroe hertz, Enemigo enemigo)
+bool ControllerCombate::combatir(Heroe* hertz, Enemigo* enemigo)
 {
 	int opcion;
 	// Turno Hertz
 	cout << "¿Que ataque desea usar?" << endl;
-	cout << "1. Atacar" << endl;
-	cin >> opcion;
-	switch (opcion)
+	if (hertz->getArma().getResistencia() == 0)
 	{
-	case 1:
-		if (hertz.getArma().getResistencia() == 0)
-		{
-			enemigo.setVida(enemigo.getVida() - (hertz.getAtaqueBase()));
-		}
-		enemigo.setVida(enemigo.getVida() - (hertz.getAtaqueBase() + hertz.getArma().getPuntosAtaque()));
-		hertz.getArma().setResistencia(hertz.getArma().getResistencia() - 1);
-		if (hertz.getArma().getResistencia() == 0)
-		{
-			Item* pItem = &hertz.getArma();
-			hertz.eliminarItemLista(pItem);
-		}
-	default:
-		cout << "Opcion incorrecta, ingrese una opcion valida" << endl;
+		cout << "1. Atacar a puno" << "\n";
+	}
+	else
+	{
+		cout << "1. Atacar con el arma" << "\n";
+	}
+	cout << "2. ";
+	cin >> opcion;
+	hertz->seleccionarAtaque(opcion)->aplicarEfecto(hertz, enemigo);
+	
+	if (hertz->getArma().getResistencia() == 0)
+	{
+		Item* pItem = &hertz->getArma();
+		hertz->eliminarItemLista(pItem);
 	}
 	// Turno Enemigo
-	enemigo.seleccionarAtaque()->aplicarEfecto(hertz);
-	if (hertz.getVida() <= 0)
+	enemigo->seleccionarAtaque()->aplicarEfecto(hertz);
+	if (hertz->getVida() <= 0)
 	{
 		return 0;
 	}
-	if (enemigo.getVida() <= 0)
+	if (enemigo->getVida() <= 0)
 	{
 		return 1;
 	}

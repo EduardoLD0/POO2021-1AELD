@@ -1,7 +1,7 @@
 #include "ataqueComun.h"
 
-void AtaqueComun::aplicarEfecto(Character* dummy)
+void AtaqueComun::aplicarEfecto(Character* dummy, Character* dummy2)
 {
-	int cambioVida = dummy->getVida() - 5; // Valor temporal
-	dummy->setVida(cambioVida);
+	dummy2->setVida(dummy2->getVida() - (dummy->getAtaqueBase() + dummy->getArma().getPuntosAtaque()));
+	dummy->getArma().setResistencia(dummy->getArma().getResistencia() - 1);
 }

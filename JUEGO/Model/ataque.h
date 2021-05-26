@@ -7,7 +7,8 @@
 class Ataque
 {
 public:
-	virtual void aplicarEfecto(Character) = 0;
+	virtual void aplicarEfecto(int*) = 0;
+	virtual void aplicarEfecto(Character*, Character*) = 0;
 };
 
 #endif
