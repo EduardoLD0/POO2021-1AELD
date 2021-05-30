@@ -2,7 +2,7 @@
 
 void View::pantallaPrincipal()
 {
-    int opcion = -1;
+    int opcion = -1, dificultad;
     do
     {
         cout << "Bienvenido a Hertz el heroe" << endl;
@@ -12,7 +12,11 @@ void View::pantallaPrincipal()
         switch(opcion)
         {
         case 1:
-            juego();
+            cout << "Ingrese la dificultad" << endl;
+            cout << "1. Principiante" << endl;
+            cout << "2. Normal" << endl;
+            cin >> dificultad;
+            this->juego(dificultad);
             break;
         case 0:
             break;
@@ -75,7 +79,17 @@ void View::evento(int evento)
             }
         } while(opcion < 1 || opcion > 2);
         pEnemigo = controllerJ->getEnemigo(controllerJ->getPosHeroe());
-        controllerC->combatir(pHeroe, pEnemigo);
+        cout << pHeroe->getPosicion()->getX() << pHeroe->getPosicion()->getY();
+        controllerJ->setGameOver(controllerC->combatir(pHeroe, pEnemigo));
+        controllerJ->setContadorCombate(controllerJ->getContadorCombate() + 1);
+        if(controllerJ->getContadorCombate() % 3 == 0)
+        {
+            controllerJ->generarPocion();
+        }
+        if(controllerJ->getContadorCombate() % 2 == 0)
+        {
+            controllerJ->generarArma();
+        }
         break;
     case 2:
         pHeroe->recogerPocion(controllerJ->getPocion(controllerJ->getPosHeroe()));
@@ -85,6 +99,7 @@ void View::evento(int evento)
         break;
     case 4:
         cout << "Felicidades, haz ganado el juego" << endl;
+        controllerJ->setGameOver(1);
         break;
     }
 }
@@ -112,4 +127,25 @@ void View::entrada(char letra)
         break;
     }
     this->evento(evento);
+}
+
+void View::juego(int dificultad)
+{
+    controllerC = new ControllerCombate();
+    switch(dificultad)
+    {
+    case 1:
+        controllerJ = new ControllerJuego(nivel::principiante);
+        break;
+    case 2:
+        controllerJ = new ControllerJuego(nivel::normal);
+        break;
+    }
+    char letra;
+    do
+    {
+        controllerJ->mostrarMazmorra();
+        cin >> letra;
+        entrada(letra);
+    } while(controllerJ->getGameOver() == 0);
 }

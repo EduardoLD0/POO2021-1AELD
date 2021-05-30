@@ -24,6 +24,8 @@ public:
 	Arma* crearBaston();
 	Arma* crearEspada();
 	Arma* crearExcalibur();
+	Enemigo* crearGuerrero();
+	Enemigo* crearMago();
 	Enemigo* crearEnemigo(std::string, Arma, int, list<Ataque*>, int);	
 	Pocion* crearPocion(tipoEfecto);
 	Ataque* crearAtaque(tipoAtaque);

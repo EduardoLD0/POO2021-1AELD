@@ -31,10 +31,11 @@ public:
 	Mazmorra(nivel);
 	Posicion * encontrarPosicion(int, int);
 	void generarLaberinto();
-	map<Posicion*, Enemigo*> agregarEnemigo();
-	map<Posicion*, Pocion*> agregarPocion();
-	map<Posicion*, Arma*> agregarArma();
+	pair<Posicion*, Enemigo*> agregarEnemigo();
+	pair<Posicion*, Pocion*> agregarPocion();
+	pair<Posicion*, Arma*> agregarArma();
 	void pintar();
 	Posicion * agregarObjeto(tipoElemento);
+	int getCantidadEnemigos();
 };
 #endif

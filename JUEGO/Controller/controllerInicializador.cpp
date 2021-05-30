@@ -1,5 +1,10 @@
 #include "controllerInicializador.h"
 
+ControllerInicializador::ControllerInicializador()
+{
+
+}
+
 Arma* ControllerInicializador::crearArma(std::string nombre, int resistencia, int dano)
 {
 	Arma* pArma = new Arma(nombre, resistencia, dano);
@@ -25,6 +30,20 @@ Enemigo* ControllerInicializador::crearEnemigo(std::string nombre, Arma arma, in
 {
 	Enemigo* pEnemigo = new Enemigo(nombre, arma, vida, listaAtaques, ataqueBase);
 	return pEnemigo;
+}
+
+Enemigo* ControllerInicializador::crearGuerrero()
+{
+	Ataque* pAtaque1 = new AtaqueComun();
+	Ataque* pAtaque2 = new AtaqueResistencia();
+	return crearEnemigo("Guerrero", Arma("Espada", 10, 7), 5, {pAtaque1, pAtaque2}, 3);
+}
+
+Enemigo* ControllerInicializador::crearMago()
+{
+	Ataque* pAtaque1 = new AtaqueComun();
+	Ataque* pAtaque2 = new AtaqueCuracion();
+	return crearEnemigo("Guerrero", Arma("Baston", 8, 10), 5, {pAtaque1, pAtaque2}, 3);
 }
 
 Pocion* ControllerInicializador::crearPocion(tipoEfecto tipo)

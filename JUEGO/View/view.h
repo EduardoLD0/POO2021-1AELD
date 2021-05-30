@@ -1,20 +1,19 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include "controllerJuego.h"
-#include "controllerInicializador.h"
-#include "controllerCombate.h"
+#include "../Controller/controllerJuego.h"
+#include "../Controller/controllerInicializador.h"
+#include "../Controller/controllerCombate.h"
 
 class View
 {
     private:
-        ControllerInicializador* controllerI;
         ControllerJuego* controllerJ;
         ControllerCombate* controllerC;
     public:
         void pantallaPrincipal();
         void inventario();
-        void juego();
+        void juego(int);
         void entrada(char);
         void evento(int);
 };

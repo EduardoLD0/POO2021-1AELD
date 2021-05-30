@@ -6,8 +6,12 @@ MODEL := Model
 debug := -ggdb3
 
 all: programa
-programa: controllerJuego controllerInicializador controllerCombate character heroe enemigo item pocion pocionVida pocionDefensa pocionDebilitadora pocionAtaque arma ataque ataqueComun ataqueDebilitador ataqueResistencia ataqueCuracion ataqueParalizador posicion mazmorra
-	g++ ${debug} -o  a.exe controllerJuego.o controllerInicializador.o controllerCombate.o character.o heroe.o enemigo.o item.o pocion.o pocionVida.o pocionDefensa.o pocionDebilitadora.o pocionAtaque.o arma.o ataque.o ataqueComun.o ataqueDebilitador.o ataqueResistencia.o ataqueCuracion.o ataqueParalizador.o posicion.o mazmorra.o
+programa: main view controllerJuego controllerInicializador controllerCombate character heroe enemigo item pocion pocionVida pocionDefensa pocionDebilitadora pocionAtaque arma ataque ataqueComun ataqueDebilitador ataqueResistencia ataqueCuracion ataqueParalizador posicion mazmorra
+	g++ ${debug} -o  a.exe main.o view.o controllerJuego.o controllerInicializador.o controllerCombate.o character.o heroe.o enemigo.o item.o pocion.o pocionVida.o pocionDefensa.o pocionDebilitadora.o pocionAtaque.o arma.o ataque.o ataqueComun.o ataqueDebilitador.o ataqueResistencia.o ataqueCuracion.o ataqueParalizador.o posicion.o mazmorra.o
+main: main.cpp
+	g++ -c ${debug} main.cpp
+view: ${VIEW}/view.cpp ${VIEW}/view.h
+	g++ -c ${debug} ${VIEW}/view.cpp
 controllerJuego: ${CONTROLLER}/controllerJuego.cpp ${CONTROLLER}/controllerJuego.h
 	g++ -c ${debug} ${CONTROLLER}/controllerJuego.cpp
 controllerInicializador: ${CONTROLLER}/controllerInicializador.cpp ${CONTROLLER}/controllerInicializador.h

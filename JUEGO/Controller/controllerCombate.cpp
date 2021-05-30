@@ -7,7 +7,7 @@ bool ControllerCombate::combatir(Heroe* hertz, Enemigo* enemigo)
 	this->turno = 1;
 	do
 	{
-		if(turnosPerdidos = 0)
+		if(turnosPerdidos == 0)
 		{
 			this->turno = !this->turno;
 		}
@@ -15,6 +15,7 @@ bool ControllerCombate::combatir(Heroe* hertz, Enemigo* enemigo)
 		{
 			--turnosPerdidos;
 		}
+		cout << "x";
 		if(!this->turno)
 		{
 			cout << "Que ataque desea usar?" << endl;
@@ -32,6 +33,7 @@ bool ControllerCombate::combatir(Heroe* hertz, Enemigo* enemigo)
 			pAtaque = enemigo->seleccionarAtaque(1);
 			atacar(enemigo, hertz, pAtaque);
 		}
+		cout << "x";
 		if (hertz->getArma()->getResistencia() < 1 && hertz->getArma()->getNombre() != "Sin arma")
 		{
 			hertz->eliminarArmaLista(hertz->getArma());
@@ -50,11 +52,12 @@ bool ControllerCombate::combatir(Heroe* hertz, Enemigo* enemigo)
 	}
 	if(hertz->getVida() <= 0)
 	{
-		return 0;
+		cout << "Haz muerto. Buen intento vaquero." << endl;
+		return 1;
 	}
 	else
 	{
-		return 1;
+		return 0;
 	}
 }
 

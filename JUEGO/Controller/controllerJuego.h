@@ -1,6 +1,8 @@
 #ifndef CONTROLLERJUEGO_H
 #define CONTROLLERJUEGO_H	
 
+#include <cstring>
+
 #include "controllerInicializador.h"
 
 using namespace std;
@@ -16,18 +18,20 @@ enum class direccion
 class ControllerJuego
 {
 private:
+	ControllerInicializador* controllerI;
 	Mazmorra* mazmorra;
 	Heroe* heroe;
 	list<Arma*> listaArmas;
 	list<Pocion*> listaPociones;
 	list<Enemigo*> listaEnemigos;
+	list<Ataque*> listaAtaques;
 	map<Posicion*, Pocion*> listaPocionesSuelo;
 	map<Posicion*, Arma*> listaArmasSuelo;
 	map<Posicion*, Enemigo*> listaEnemigosSuelo;
-	bool artefactoEncontrado;
+	bool artefactoEncontrado, gameOver;
 	int contadorCombate;
 public:
-	ControllerJuego(Mazmorra*);
+	ControllerJuego(nivel);
 	void generarPocion();
 	void generarArma();
 	void generarEnemigo();
@@ -41,6 +45,9 @@ public:
 	Enemigo* getEnemigo(Posicion*);
 	Heroe* getHeroe();
 	Posicion* getPosHeroe();
+	void mostrarMazmorra();
+	bool getGameOver();
+	void setGameOver(bool);
 };
 
 #endif

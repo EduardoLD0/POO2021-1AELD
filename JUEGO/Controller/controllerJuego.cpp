@@ -1,48 +1,77 @@
 #include "controllerJuego.h"
 
-ControllerJuego::ControllerJuego(Mazmorra* mazmorra)
+ControllerJuego::ControllerJuego(nivel nivelMazmorra)
 {
-	this->mazmorra = mazmorra;
-	contadorCombate = 0;
-	Pocion* pocion, *pocion2;
-	Arma* arma, * arma2;
-	listaPociones.push_back(pocion);
-	listaPociones.push_back(pocion2);
-	listaArmas.push_back(arma);
-	listaArmas.push_back(arma2);
+	int i;
+	controllerI = new ControllerInicializador();
+	mazmorra = controllerI->crearMazmorra(nivelMazmorra);
+	heroe = controllerI->crearHeroe();
+	heroe->setPosicion(mazmorra->agregarObjeto(tipoElemento::heroe));
+	mazmorra->agregarObjeto(tipoElemento::artefacto);
+	list<Arma*>::iterator itArma;
+	list<Ataque*>::iterator itAtaque1, itAtaque2, itAtaque3;
+	listaPociones.push_back(controllerI->crearPocion(tipoEfecto::curacion));
+	listaPociones.push_back(controllerI->crearPocion(tipoEfecto::dano));
+	listaPociones.push_back(controllerI->crearPocion(tipoEfecto::ataque));
+	listaPociones.push_back(controllerI->crearPocion(tipoEfecto::resistencia));
+	
+	listaArmas.push_back(controllerI->crearBaston());
+	listaArmas.push_back(controllerI->crearEspada());
+	listaArmas.push_back(controllerI->crearExcalibur());	
+	listaAtaques.push_back(controllerI->crearAtaque(tipoAtaque::dano));
+	listaAtaques.push_back(controllerI->crearAtaque(tipoAtaque::ataque));
+	listaAtaques.push_back(controllerI->crearAtaque(tipoAtaque::curacion));
+	listaAtaques.push_back(controllerI->crearAtaque(tipoAtaque::resistencia));
+	listaAtaques.push_back(controllerI->crearAtaque(tipoAtaque::turno));
+	listaEnemigos.push_back(controllerI->crearGuerrero());
+	listaEnemigos.push_back(controllerI->crearMago());
+	
+	for(i = 0; i < mazmorra->getCantidadEnemigos(); ++i)
+	{
+		generarEnemigo();
+	}
 }
 
 void ControllerJuego::generarPocion()
 {
-	map<Posicion*, Pocion*> pocionTemp = mazmorra->agregarPocion();
-	map<Posicion*, Pocion*>::iterator it = pocionTemp.begin();
-	list<Pocion*>::iterator it2 = listaPociones.begin();
+	srand(time(NULL));
+	pair<Posicion*,Pocion*> pocionTemp = mazmorra->agregarPocion();
+	listaPocionesSuelo.insert(pocionTemp);
+	list<Pocion*>::iterator it = listaPociones.begin();
 	int aleatorio = rand() % listaPociones.size();
-	it2 = std::next(listaPociones.begin(), aleatorio);
-	it->second = *it2;
-	listaPocionesSuelo.insert(pocionTemp.begin(), pocionTemp.end());
+	it = std::next(listaPociones.begin(), aleatorio);
+	pocionTemp.second = *it;
 }
 
 void ControllerJuego::generarArma()
 {
-	map<Posicion*, Arma*> armaTemp = mazmorra->agregarArma();
-	map<Posicion*, Arma*>::iterator it = armaTemp.begin();
-	list<Arma*>::iterator it2 = listaArmas.begin();
+	srand(time(NULL));
+	pair<Posicion*,Arma*> armaTemp = mazmorra->agregarArma();
+	listaArmasSuelo.insert(armaTemp);
+	list<Arma*>::iterator it = listaArmas.begin();
 	int aleatorio = rand() % listaArmas.size();
-	it2 = std::next(listaArmas.begin(), aleatorio);
-	it->second = *it2;
-	listaArmasSuelo.insert(armaTemp.begin(), armaTemp.end());
+	it = std::next(listaArmas.begin(), aleatorio);
+	armaTemp.second = *it;
 }
 
 void ControllerJuego::generarEnemigo()
 {
-	map<Posicion*, Enemigo*> enemigoTemp = mazmorra->agregarEnemigo();
-	map<Posicion*, Enemigo*>::iterator it = enemigoTemp.begin();
-	list<Enemigo*>::iterator it2 = listaEnemigos.begin();
-	int aleatorio = rand() % listaArmas.size();
-	it2 = std::next(listaEnemigos.begin(), aleatorio);
-	*it->second = **it2;
-	listaEnemigosSuelo.insert(enemigoTemp.begin(), enemigoTemp.end());
+	srand(time(NULL));
+	Enemigo* pEnemigo;
+	pair<Posicion*,Enemigo*> enemigoTemp = mazmorra->agregarEnemigo();
+	listaEnemigosSuelo.insert(enemigoTemp);
+	list<Enemigo*>::iterator it = listaEnemigos.begin();
+	int aleatorio = rand() % listaEnemigos.size();
+	it = std::next(listaEnemigos.begin(), aleatorio);
+	switch((*it)->getTipoEnemigo())
+	{
+		case(tipoEnemigo::guerrero):
+			enemigoTemp.second = controllerI->crearGuerrero();
+			break;
+		case(tipoEnemigo::mago):
+			enemigoTemp.second = controllerI->crearMago();
+			break;
+	}
 }
 
 void ControllerJuego::actualizarItem()
@@ -164,9 +193,11 @@ int ControllerJuego::moverPersonaje(direccion dir)
 			heroe->getPosicion()->setElemento(tipoElemento::vacio);
 			salida = 0;
 			heroe->setPosicion(pPosicion);
+			cout << "Haz encontrado la esmeralda, ahora podras salvar la farmacia" << endl;
 			this->artefactoEncontrado = 1;
 			break;
 	}
+	heroe->getPosicion()->setElemento(tipoElemento::heroe);
 	return salida;
 }
 
@@ -203,4 +234,19 @@ Heroe* ControllerJuego::getHeroe()
 Posicion* ControllerJuego::getPosHeroe()
 {
 	return this->heroe->getPosicion();
+}
+
+void ControllerJuego::mostrarMazmorra()
+{
+	this->mazmorra->pintar();
+}
+
+void ControllerJuego::setGameOver(bool estado)
+{
+	this->gameOver = estado;
+}
+
+bool ControllerJuego::getGameOver()
+{
+	return this->gameOver;
 }
