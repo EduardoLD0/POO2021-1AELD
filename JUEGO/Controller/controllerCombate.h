@@ -11,7 +11,8 @@ private:
 	bool turno; // 0 = Turno Hertz, 1 = Turno Enemigo
 	int contadorTurno;
 public:
-	bool combatir(Heroe*, Enemigo*); // 0 = Perdió el combate, 1 = Ganó el combate
+	bool combatir(Heroe*, Enemigo*); // 0 = Perdiï¿½ el combate, 1 = Ganï¿½ el combate
+	void atacar(Character*, Character*, Ataque*);
 };
 
 #endif

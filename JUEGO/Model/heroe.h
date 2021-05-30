@@ -23,5 +23,8 @@ public:
 	bool revisarItem(tipoItem);
 	void eliminarArmaLista(Arma*);
 	Ataque* seleccionarAtaque(int);
+	void mostrarListaPociones();
+	void mostrarListaArmas();
+	void mostrarListaAtaques();
 };
 #endif

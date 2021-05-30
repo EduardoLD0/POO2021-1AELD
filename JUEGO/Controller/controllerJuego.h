@@ -5,6 +5,14 @@
 
 using namespace std;
 
+enum class direccion
+{
+	arriba = 1,
+	abajo = 2,
+	izquierda = 3,
+	derecha = 4
+};
+
 class ControllerJuego
 {
 private:
@@ -16,6 +24,7 @@ private:
 	map<Posicion*, Pocion*> listaPocionesSuelo;
 	map<Posicion*, Arma*> listaArmasSuelo;
 	map<Posicion*, Enemigo*> listaEnemigosSuelo;
+	bool artefactoEncontrado;
 	int contadorCombate;
 public:
 	ControllerJuego(Mazmorra*);
@@ -23,8 +32,8 @@ public:
 	void generarArma();
 	void generarEnemigo();
 	void actualizarItem();
-	Posicion* verPosicionSiguiente();
-	int moverPersonaje();
+	Posicion* verPosicionSiguiente(direccion);
+	int moverPersonaje(direccion);
 	int getContadorCombate();
 	void setContadorCombate(int);
 	Pocion* getPocion(Posicion*);

@@ -69,3 +69,30 @@ Ataque* Heroe::seleccionarAtaque(int id)
 	it = std::next(listaAtaques.begin(), id - 1);
 	return *it;
 }
+
+void Heroe::mostrarListaPociones()
+{
+	int i = 0;
+	for(list<Pocion*>::iterator it = listaPociones.begin(); it != listaPociones.end(); ++it)
+	{
+		cout << ++i << ". " << (*it)->getNombre() << "." << endl;
+	}
+}
+
+void Heroe::mostrarListaArmas()
+{
+	int i = 0;
+	for(list<Arma*>::iterator it = listaArmas.begin(); it != listaArmas.end(); ++it)
+	{
+		cout << ++i << ". " << (*it)->getNombre() << "." << endl;
+	}
+}
+
+void Heroe::mostrarListaAtaques()
+{
+	int i = 0;
+	for(list<Ataque*>::iterator it = listaAtaques.begin(); it != listaAtaques.end(); ++it)
+	{
+		cout << ++i << ". " << (*it)->getNombre() << "." << endl;
+	}
+}

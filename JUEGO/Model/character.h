@@ -16,7 +16,7 @@ protected:
 	std::string nombre;
 	int vida;	
 	int ataqueBase;
-	Posicion posicion;
+	Posicion* posicion;
 	Arma arma;
 	list<Ataque*> listaAtaques;
 public:
@@ -25,9 +25,10 @@ public:
 	int getVida();
 	void setAtaqueBase(int);
 	int  getAtaqueBase();
-	void setPosicion(Posicion);
-	Arma& getArma();
-	Posicion getPosicion();
+	void setPosicion(Posicion*);
+	Arma* getArma();
+	void setArma(Arma);
+	Posicion* getPosicion();
 	std::string getNombre();
 	void agregarAtaque(Ataque *);
 	virtual Ataque* seleccionarAtaque(int) = 0;

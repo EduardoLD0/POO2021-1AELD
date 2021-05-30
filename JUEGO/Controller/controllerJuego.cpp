@@ -79,3 +79,128 @@ void ControllerJuego::actualizarItem()
 		}
 	}
 }
+
+Posicion* ControllerJuego::verPosicionSiguiente(direccion dir)
+{
+	Posicion* pPosicion;
+	int x = this->heroe->getPosicion()->getX(), y = this->heroe->getPosicion()->getY();
+	switch(dir)
+	{
+		case(direccion::arriba):
+			pPosicion = mazmorra->encontrarPosicion(x, y + 1);
+			break;
+		case(direccion::abajo):
+			pPosicion = mazmorra->encontrarPosicion(x, y - 1);
+			break;
+		case(direccion::izquierda):
+			pPosicion = mazmorra->encontrarPosicion(x - 1, y);
+			break;
+		case(direccion::derecha):
+			pPosicion = mazmorra->encontrarPosicion(x + 1, y);
+			break;
+	}
+	return pPosicion;
+}
+
+int ControllerJuego::moverPersonaje(direccion dir)
+{
+	int salida, opcion;
+	Posicion* pPosicion = verPosicionSiguiente(dir);
+	switch(pPosicion->getElemento())
+	{
+		case(tipoElemento::enemigo):
+			heroe->getPosicion()->setElemento(tipoElemento::vacio);
+			salida = 1;
+			heroe->setPosicion(pPosicion);
+			break;
+		case(tipoElemento::pocion):
+			cout << "Desea recoger la pocion?" << endl;
+			cout << "1. Si" << endl;
+			cout << "2. No" << endl;
+			cin >> opcion;
+			if(opcion == 1)
+			{
+				heroe->getPosicion()->setElemento(tipoElemento::vacio);
+				heroe->setPosicion(pPosicion);
+				salida = 2;
+			}
+			else
+			{
+				salida = 0;
+			}
+			break;
+		case(tipoElemento::arma):
+			cout << "Desea recoger el arma?" << endl;
+			cout << "1. Si" << endl;
+			cout << "2. No" << endl;
+			cin >> opcion;
+			if(opcion == 1)
+			{
+				heroe->getPosicion()->setElemento(tipoElemento::vacio);
+				heroe->setPosicion(pPosicion);
+				salida = 3;
+			}
+			else
+			{
+				salida = 0;
+			}
+			break;
+		case(tipoElemento::puerta):
+			if(artefactoEncontrado == 1)
+			{
+				salida = 4;
+			}
+			else
+			{
+				salida = 0;
+			}
+			break;
+		case(tipoElemento::vacio):
+			heroe->getPosicion()->setElemento(tipoElemento::vacio);
+			salida = 0;
+			heroe->setPosicion(pPosicion);
+			break;
+		case(tipoElemento::artefacto):
+			heroe->getPosicion()->setElemento(tipoElemento::vacio);
+			salida = 0;
+			heroe->setPosicion(pPosicion);
+			this->artefactoEncontrado = 1;
+			break;
+	}
+	return salida;
+}
+
+int ControllerJuego::getContadorCombate()
+{
+	return this->contadorCombate;
+}
+
+void ControllerJuego::setContadorCombate(int num)
+{
+	this->contadorCombate = num;
+}
+
+Pocion* ControllerJuego::getPocion(Posicion* pPosicion)
+{
+	return listaPocionesSuelo.find(pPosicion)->second;
+}
+
+Arma* ControllerJuego::getArma(Posicion* pPosicion)
+{
+	return listaArmasSuelo.find(pPosicion)->second;
+}
+
+Enemigo* ControllerJuego::getEnemigo(Posicion* pPosicion)
+{
+	return listaEnemigosSuelo.find(pPosicion)->second;
+}
+
+Heroe* ControllerJuego::getHeroe()
+{
+	return this->heroe;
+}
+
+Posicion* ControllerJuego::getPosHeroe()
+{
+	return this->heroe->getPosicion();
+}

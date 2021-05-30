@@ -14,9 +14,9 @@ Mazmorra::Mazmorra(nivel nivelMazmorra)
 		this->cantidadEnemigos = 25;
 		tamano = 15;
 	}
-	for(x = 0; x < tamano; x++)
+	for(y = tamano - 1; y <= 0; --y)
 	{
-		for(y = 0; y < tamano; y++)
+		for(x = 0; x < tamano; ++x)
 		{
 			Posicion* pPosicion = new Posicion(x, y, tipoElemento::vacio);
 			matriz.push_back(pPosicion);
@@ -197,3 +197,7 @@ Posicion * Mazmorra::agregarObjeto(tipoElemento elemento)
 	return pPosicion;
 }
 
+// mmmmmmmmm
+// <o>   <o>
+//     U
+//  _______

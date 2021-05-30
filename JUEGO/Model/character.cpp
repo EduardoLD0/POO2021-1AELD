@@ -18,19 +18,25 @@ int Character::getAtaqueBase()
 {
 	return this->ataqueBase;
 }
-void Character::setPosicion(Posicion posicion)
+void Character::setPosicion(Posicion* posicion)
 {
 	this->posicion = posicion;
 }
 
-Posicion Character::getPosicion()
+Posicion* Character::getPosicion()
 {
 	return this->posicion;
 }
 
-Arma& Character::getArma()
+Arma* Character::getArma()
 {
-	return arma;
+	Arma* pArma = &this->arma;
+	return pArma;
+}
+
+void Character::setArma(Arma arma)
+{
+	this->arma = arma;
 }
 
 void Character::agregarAtaque(Ataque* pAtaque)
