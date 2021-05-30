@@ -17,6 +17,7 @@ protected:
 	int ataqueBase;
 	Posicion posicion;
 	Arma arma;
+	list<Ataque*> listaAtaques;
 public:
 	Character();
 	void setVida(int);

@@ -1,6 +1,6 @@
 #include "pocion.h"
 
-Pocion::~Pocion()
+tipoEfecto Pocion::getTipoEfecto()
 {
-
+    return this->tipo;
 }

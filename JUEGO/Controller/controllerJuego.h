@@ -21,6 +21,7 @@ private:
 	list<Enemigo*> listaEnemigos;
 	map<Pocion*, Posicion*> listaPocionesSuelo;
 	map<Arma*, Posicion*> listaArmasSuelo;
+	map<Enemigo*, Posicion*> listaPocionesSuelo;
 	int contadorCombate;
 public:
 	ControllerJuego(Mazmorra*);

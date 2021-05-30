@@ -6,7 +6,7 @@
 class AtaqueComun : public Ataque
 {
 public:
-	void aplicarEfecto(Character*, Character*);
+	int aplicarEfecto();
 };
 
 #endif

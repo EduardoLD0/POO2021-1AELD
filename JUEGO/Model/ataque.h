@@ -2,13 +2,13 @@
 #define ATAQUE_H
 
 #include <iostream>
-#include "character.h"
 
 class Ataque
 {
+protected:
+	std::string nombre;
 public:
-	virtual void aplicarEfecto(int*) = 0;
-	virtual void aplicarEfecto(Character*, Character*) = 0;
+	virtual int aplicarEfecto() = 0;
 };
 
 #endif

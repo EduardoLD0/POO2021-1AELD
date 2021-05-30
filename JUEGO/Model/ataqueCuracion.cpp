@@ -1,7 +1,11 @@
 #include "ataqueCuracion.h"
 
-void AtaqueCuracion::aplicarEfecto(Character* dummy)
+AtaqueCuracion::AtaqueCuracion()
 {
-	int cambioVida = dummy->getVida() + 5; // Valor temporal
-	dummy->setVida(cambioVida);
+	this->nombre = "Restauracion";
+}
+
+int AtaqueCuracion::aplicarEfecto()
+{
+	return 2;
 }

@@ -6,7 +6,7 @@
 class AtaqueCuracion : public Ataque
 {
 public:
-	void aplicarEfecto(Character*);
+	int aplicarEfecto();
 };
 
 #endif

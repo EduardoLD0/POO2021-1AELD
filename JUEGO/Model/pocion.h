@@ -15,10 +15,12 @@ enum tipoEfecto
 class Pocion : public Item
 {
 protected:
+	std::string nombre;
 	tipoEfecto tipo;
 public:
 	~Pocion();
-	virtual void aplicarEfecto(Character *) = 0;
+	tipoEfecto getTipoEfecto();
+	virtual int aplicarEfecto() = 0;
 };
 
 #endif

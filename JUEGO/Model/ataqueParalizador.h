@@ -1,12 +1,12 @@
 #ifndef ATAQUEPARALIZADOR_H
 #define ATAQUEPARALIZADOR_H
 
-#include <iostream>
+#include "ataque.h"
 
-class AtaqueInvocarMagos : public Ataque
+class AtaqueParalizador : public Ataque
 {
-	public:
-	void aplicarEfecto(Character*);
-}
+public:
+	int aplicarEfecto();
+};
 
 #endif

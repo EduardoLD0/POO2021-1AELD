@@ -1,44 +1,63 @@
 #include "heroe.h"
 
-void Heroe::usarPocion(Pocion* pocion)
+int Heroe::usarPocion(int numPocion)
 {
-	pocion->aplicarEfecto(dynamic_cast<Character *> (this));
+	list<Pocion*>::iterator it = std::next(listaPociones.begin(), numPocion - 1);
+	switch((*it)->getTipoEfecto())
+	{
+		case(tipoEfecto::ataque):
+			this->ataqueBase += (*it)->aplicarEfecto();
+			break;
+		case(tipoEfecto::curacion):
+			this->vida += (*it)->aplicarEfecto();
+			break;
+		case(tipoEfecto::resistencia):
+			this->arma.setResistencia(this->arma.getResistencia() + (*it)->aplicarEfecto());
+			break;
+		case(tipoEfecto::dano):
+			return 1;
+			break;
+	}
+	listaPociones.erase(it);
+	return 0;
 }
 
-void Heroe::setArma(Arma arma)
+void Heroe::seleccionarArma(int numArma)
 {
-	this->arma = arma;
+	list<Arma*>::iterator it = std::next(listaArmas.begin(), numArma - 1);
+	this->arma = **it;
 }
 
-void Heroe::recogerItem(Item* item)
+void Heroe::recogerPocion(Pocion* pocion)
 {
-	listaItemInv.push_back(item);
+	listaPociones.push_back(pocion);
+}
+
+void Heroe::recogerArma(Arma* arma)
+{
+	listaArmas.push_back(arma);
 }
 
 bool Heroe::revisarItem(tipoItem tipo)
 {
-	for (list<Item*>::iterator it = listaItemInv.begin(); it != listaItemInv.end(); ++it)
+	if(tipo == tipoItem::pocion)
 	{
-		if ((*it)->getTipo() == tipo)
-		{
-			return 1;
-		}
+		return listaPociones.size();
 	}
-	return 0;
+	else
+	{
+		return listaArmas.size();
+	}
 }
 
-void Heroe::eliminarItemLista(Item* item)
+void Heroe::eliminarArmaLista(Arma* arma)
 {
-	listaItemInv.remove(item);
+	listaArmas.remove(arma);
 }
 
 Ataque* Heroe::seleccionarAtaque(int id)
 {
-	list<Ataque*>::iterator it = listaAtaques.begin();
-	int i;
-	for (i = 0; i < id; ++i)
-	{
-		++it;
-	}
+	list<Ataque*>::iterator it;
+	it = std::next(listaAtaques.begin(), id - 1);
 	return *it;
 }

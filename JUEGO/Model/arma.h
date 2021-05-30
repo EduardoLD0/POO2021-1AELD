@@ -6,6 +6,7 @@
 class Arma : public Item
 {
 private:
+	std::string nombre;
 	int resistencia, puntosAtaque;
 public:
 	Arma(int, int);

@@ -1,8 +1,6 @@
 #include "ataqueResistencia.h"
 
-void AtaqueResistencia::aplicarEfecto(Character* dummy)
+int AtaqueResistencia::aplicarEfecto()
 {
-	Arma * armaDummy = &dummy->getArma();
-	int cambioResistencia = armaDummy->getResistencia() - 5; // Valor temporal
-	armaDummy->setResistencia(cambioResistencia);
+	return 1;
 }

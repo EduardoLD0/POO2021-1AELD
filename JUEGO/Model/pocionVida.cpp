@@ -1,8 +1,8 @@
 #include "pocionVida.h"
 
-PocionVida::~PocionVida()
+PocionVida::PocionVida()
 {
-
+	this->nombre = "Pocion de vida";
 }
 
 void PocionVida::aplicarEfecto(Character *dummy)

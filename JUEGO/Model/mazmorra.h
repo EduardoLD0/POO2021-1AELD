@@ -3,9 +3,14 @@
 
 #include <iostream>
 #include "posicion.h"
-#include "item.h"
+#include "pocionVida.h"
+#include "pocionDebilitadora.h"
+#include "pocionAtaque.h"
+#include "pocionDefensa.h"
+#include "enemigo.h"
 #include <list>
 #include <ctime>
+#include <map>
 
 using namespace std;
 
@@ -26,9 +31,10 @@ public:
 	Mazmorra(nivel);
 	Posicion * encontrarPosicion(int, int);
 	void generarLaberinto();
-	void agregarEnemigos();
-	Posicion * agregarItem(tipoItem);
+	map<Posicion*, Enemigo*> agregarEnemigo();
+	map<Posicion*, Pocion*> agregarPocion();
+	map<Posicion*, Arma*> agregarArma();
 	void pintar();
-	void agregarObjeto(tipoElemento);
+	Posicion * agregarObjeto(tipoElemento);
 };
 #endif

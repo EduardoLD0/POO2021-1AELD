@@ -12,14 +12,16 @@
 class Heroe : public Character 
 {
 private:
-	list<Item*> listaItemInv;
+	list<Pocion*> listaPociones;
+	list<Arma*> listaArmas;
 public:
 	Heroe();
-	void usarPocion(Pocion*);
-	void setArma(Arma);
-	void recogerItem(Item*);
+	int usarPocion(int);
+	void seleccionarArma(int);
+	void recogerPocion(Pocion*);
+	void recogerArma(Arma*);
 	bool revisarItem(tipoItem);
-	void eliminarItemLista(Item*);
+	void eliminarArmaLista(Arma*);
 	Ataque* seleccionarAtaque(int);
 };
 #endif

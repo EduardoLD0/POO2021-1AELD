@@ -1,8 +1,8 @@
 #include "pocionAtaque.h"
 
-PocionAtaque::~PocionAtaque()
+PocionAtaque::PocionAtaque()
 {
-
+	this->nombre = "Pocion de ataque";
 }
 
 void PocionAtaque::aplicarEfecto(Character *dummy)
