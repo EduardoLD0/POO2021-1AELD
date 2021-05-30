@@ -9,7 +9,6 @@ class Enemigo : public Character
 {
 public:
 	Enemigo(std::string, Arma, int, list<Ataque*>, int);
-	void agregarAtaque(Ataque *);
 	Ataque *seleccionarAtaque(int);
 };
 

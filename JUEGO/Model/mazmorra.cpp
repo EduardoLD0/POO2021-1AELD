@@ -161,6 +161,7 @@ map<Posicion *, Arma *> Mazmorra::agregarArma()
 		pPosicion = encontrarPosicion(x, y);
 	} while (pPosicion->getElemento() != tipoElemento::vacio);
 	pPosicion->setElemento(tipoElemento::arma);
+	pPosicion->setTurnosSpawn(3);
 	mapaTemp.insert(pair<Posicion*, Arma*>(pPosicion, pArma));
 	return mapaTemp;
 }
@@ -179,6 +180,7 @@ map<Posicion *, Pocion *> Mazmorra::agregarPocion()
 		pPosicion = encontrarPosicion(x, y);
 	} while (pPosicion->getElemento() != tipoElemento::vacio);
 	pPosicion->setElemento(tipoElemento::pocion);
+	pPosicion->setTurnosSpawn(3);
 	mapaTemp.insert(pair<Posicion*, Pocion*>(pPosicion, pPocion));
 	return mapaTemp;
 }

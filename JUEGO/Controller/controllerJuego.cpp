@@ -14,41 +14,44 @@ ControllerJuego::ControllerJuego(Mazmorra* mazmorra)
 
 void ControllerJuego::generarPocion()
 {
-	
-	srand(time(NULL));
-	int i, numAleatorio = rand() % listaPociones.size();
-	cout << numAleatorio;
-	list<Pocion*>::iterator it = listaPociones.begin(); 
-	for (i = 0; i <= numAleatorio; ++i)
-	{
-		++it;
-	}
-	Posicion* pPocion = mazmorra->agregarItem(tipoItem::pocion);
-	listaPocionesSuelo.insert(pair<Pocion*, Posicion*>((*it), pPocion));
-	pPocion->setTurnosSpawn(3);
+	map<Posicion*, Pocion*> pocionTemp = mazmorra->agregarPocion();
+	map<Posicion*, Pocion*>::iterator it = pocionTemp.begin();
+	list<Pocion*>::iterator it2 = listaPociones.begin();
+	int aleatorio = rand() % listaPociones.size();
+	it2 = std::next(listaPociones.begin(), aleatorio);
+	it->second = *it2;
+	listaPocionesSuelo.insert(pocionTemp.begin(), pocionTemp.end());
 }
 
 void ControllerJuego::generarArma()
 {
-	srand(time(NULL));
-	int i, numAleatorio = rand() % listaArmas.size();
-	list<Arma*>::iterator it = listaArmas.begin();
-	for (i = 0; i <= numAleatorio; ++i)
-	{
-		++it;
-	}
-	Posicion* pArma = mazmorra->agregarItem(tipoItem::arma);
-	listaArmasSuelo.insert(pair<Arma*, Posicion*>((*it), pArma));
-	pArma->setTurnosSpawn(3);
+	map<Posicion*, Arma*> armaTemp = mazmorra->agregarArma();
+	map<Posicion*, Arma*>::iterator it = armaTemp.begin();
+	list<Arma*>::iterator it2 = listaArmas.begin();
+	int aleatorio = rand() % listaArmas.size();
+	it2 = std::next(listaArmas.begin(), aleatorio);
+	it->second = *it2;
+	listaArmasSuelo.insert(armaTemp.begin(), armaTemp.end());
+}
+
+void ControllerJuego::generarEnemigo()
+{
+	map<Posicion*, Enemigo*> enemigoTemp = mazmorra->agregarEnemigo();
+	map<Posicion*, Enemigo*>::iterator it = enemigoTemp.begin();
+	list<Enemigo*>::iterator it2 = listaEnemigos.begin();
+	int aleatorio = rand() % listaArmas.size();
+	it2 = std::next(listaEnemigos.begin(), aleatorio);
+	*it->second = **it2;
+	listaEnemigosSuelo.insert(enemigoTemp.begin(), enemigoTemp.end());
 }
 
 void ControllerJuego::actualizarItem()
 {
 	Posicion* pPosicion, *pPosicion2;
 
-	for (map<Pocion*, Posicion*>::iterator it = listaPocionesSuelo.begin(); it != listaPocionesSuelo.end(); )
+	for (map<Posicion*, Pocion*>::iterator it = listaPocionesSuelo.begin(); it != listaPocionesSuelo.end(); )
 	{
-		pPosicion = it->second;
+		pPosicion = it->first;
 		if (pPosicion->getTurnosSpawn() == 0)
 		{
 			pPosicion->setElemento(tipoElemento::vacio);
@@ -61,9 +64,9 @@ void ControllerJuego::actualizarItem()
 		}
 	}
 
-	for (map<Arma*, Posicion*>::iterator it = listaArmasSuelo.begin(); it != listaArmasSuelo.end(); )
+	for (map<Posicion*, Arma*>::iterator it = listaArmasSuelo.begin(); it != listaArmasSuelo.end(); )
 	{
-		pPosicion2 = it->second;
+		pPosicion2 = it->first;
 		if (pPosicion2->getTurnosSpawn() == 0) 
 		{
 			pPosicion2->setElemento(tipoElemento::vacio);

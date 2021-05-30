@@ -3,10 +3,10 @@
 PocionDebilitadora::PocionDebilitadora()
 {
 	this->nombre = "Pocion de debilidad";
+	this->tipo = tipoEfecto::dano;
 }
 
-void PocionDebilitadora::aplicarEfecto(Character * dummy)
+int PocionDebilitadora::aplicarEfecto()
 {
-	int cambioVida = dummy->getVida() - 5; // Valor temporal
-	dummy->setVida(cambioVida);
+	return 4;
 }

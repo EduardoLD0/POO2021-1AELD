@@ -33,6 +33,11 @@ Arma& Character::getArma()
 	return arma;
 }
 
+void Character::agregarAtaque(Ataque* pAtaque)
+{
+	listaAtaques.push_back(pAtaque);
+}
+
 std::string Character::getNombre()
 {
 	return this->nombre;

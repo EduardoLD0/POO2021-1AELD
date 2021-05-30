@@ -3,10 +3,10 @@
 PocionDefensa::PocionDefensa()
 {
 	this->nombre = "Pocion reparadora";
+	this->tipo = tipoEfecto::resistencia;
 }
 
-void PocionDefensa::aplicarEfecto(Character * dummy)
+int PocionDefensa::aplicarEfecto()
 {
-	int cambioResistencia = dummy->getArma().getResistencia() + 5; // Valor temporal
-	dummy->getArma().setResistencia(cambioResistencia);
+	return 10;
 }

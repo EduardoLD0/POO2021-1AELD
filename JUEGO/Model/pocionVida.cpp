@@ -3,10 +3,10 @@
 PocionVida::PocionVida()
 {
 	this->nombre = "Pocion de vida";
+	this->tipo = tipoEfecto::curacion;
 }
 
-void PocionVida::aplicarEfecto(Character *dummy)
+int PocionVida::aplicarEfecto()
 {
-	int cambioVida = dummy->getVida() + 5; // Valor temporal
-	dummy->setVida(cambioVida);
+	return 10;
 }

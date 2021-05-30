@@ -1,47 +1,88 @@
 #include "controllerInicializador.h"
 
-ControllerInicializador::ControllerInicializador(nivel nivelMazmorra) : mazmorra(nivelMazmorra)
+Arma* ControllerInicializador::crearArma(std::string nombre, int resistencia, int dano)
 {
-
+	Arma* pArma = new Arma(nombre, resistencia, dano);
+	return pArma;
 }
 
-Arma* ControllerInicializador::crearBaston(int resistencia, int puntosAtaque)
+Arma* ControllerInicializador::crearBaston()
 {
-	Arma* baston = new Arma(resistencia, puntosAtaque);
-	return baston;
+	return crearArma("Baston", 10, 5);
 }
 
-Arma* ControllerInicializador::crearEspada(int resistencia, int puntosAtaque)
+Arma* ControllerInicializador::crearEspada()
 {
-	Arma* espada = new Arma(resistencia, puntosAtaque);
-	return espada;
+	return crearArma("Espada", 8, 7);
 }
 
-Character* ControllerInicializador::crearGuerrero(Arma arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
+Arma* ControllerInicializador::crearExcalibur()
 {
-	Enemigo* guerrero = new Enemigo(arma, puntosVida, listaAtaques, ataqueBase);
-	return guerrero;
+	return crearArma("Excalibur", 12, 9);
 }
 
-Character* ControllerInicializador::crearGuerreroBoss(Arma arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
+Enemigo* ControllerInicializador::crearEnemigo(std::string nombre, Arma arma, int vida, list<Ataque*>listaAtaques, int ataqueBase)
 {
-	Enemigo* guerreroBoss = new Enemigo(arma, puntosVida, listaAtaques, ataqueBase);
-	return guerreroBoss;
+	Enemigo* pEnemigo = new Enemigo(nombre, arma, vida, listaAtaques, ataqueBase);
+	return pEnemigo;
 }
 
-Character* ControllerInicializador::crearMago(Arma arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
+Pocion* ControllerInicializador::crearPocion(tipoEfecto tipo)
 {
-	Enemigo* mago = new Enemigo(arma, puntosVida, listaAtaques, ataqueBase);
-	return mago;
+	Pocion* pPocion;
+	switch(tipo)
+	{
+		case(tipoEfecto::ataque):
+			pPocion = new PocionAtaque();
+			break;
+		case(tipoEfecto::curacion):
+			pPocion = new PocionVida();
+			break;
+		case(tipoEfecto::dano):
+			pPocion = new PocionDebilitadora();
+			break;
+		case(tipoEfecto::resistencia):
+			pPocion = new PocionDefensa();
+			break;
+	}
+	return pPocion;
 }
 
-Character* ControllerInicializador::crearMagoBoss(Arma arma, int puntosVida, list<Ataque*>listaAtaques, int ataqueBase)
+Ataque* ControllerInicializador::crearAtaque(tipoAtaque tipo)
 {
-	Enemigo* magoBoss = new Enemigo(arma, puntosVida, listaAtaques, ataqueBase);
-	return magoBoss;
+	Ataque* pAtaque;
+	switch(tipo)
+	{
+		case(tipoAtaque::ataque):
+			pAtaque = new AtaqueDebilitador();
+			break;
+		case(tipoAtaque::curacion):
+			pAtaque = new AtaqueCuracion();
+			break;
+		case(tipoAtaque::dano):
+			pAtaque = new AtaqueComun();
+			break;
+		case(tipoAtaque::resistencia):
+			pAtaque = new AtaqueResistencia();
+			break;
+		case(tipoAtaque::turno):
+			pAtaque = new AtaqueParalizador();
+			break;
+	}
+	return pAtaque;
+}
+Mazmorra* ControllerInicializador::crearMazmorra(nivel nivelMazmorra)
+{
+	Mazmorra * pMazmorra = new Mazmorra(nivelMazmorra);
+	return pMazmorra;
 }
 
-Mazmorra& ControllerInicializador::getMazmorra()
+Heroe* ControllerInicializador::crearHeroe()
 {
-	return this->mazmorra;
+	Heroe * pHeroe = new Heroe();
+	Ataque* pAtaque = new AtaqueComun();
+	Ataque* pAtaque2 = new AtaqueDebilitador();
+	pHeroe->agregarAtaque(pAtaque);
+	pHeroe->agregarAtaque(pAtaque2);
+
 }

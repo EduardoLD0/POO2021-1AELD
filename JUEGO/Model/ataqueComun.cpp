@@ -3,6 +3,7 @@
 AtaqueComun::AtaqueComun()
 {
 	this->nombre = "Embestida";
+	this->tipo = tipoAtaque::dano;
 }
 
 int AtaqueComun::aplicarEfecto()

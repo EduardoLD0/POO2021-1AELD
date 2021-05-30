@@ -3,6 +3,7 @@
 AtaqueParalizador::AtaqueParalizador()
 {
     this->nombre = "Rayo laser";
+    this->tipo = tipoAtaque::turno;
 }
 
 int AtaqueParalizador::aplicarEfecto()

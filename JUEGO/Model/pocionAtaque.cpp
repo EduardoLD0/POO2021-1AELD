@@ -3,10 +3,10 @@
 PocionAtaque::PocionAtaque()
 {
 	this->nombre = "Pocion de ataque";
+	this->tipo = tipoEfecto::ataque;
 }
 
-void PocionAtaque::aplicarEfecto(Character *dummy)
+int PocionAtaque::aplicarEfecto()
 {
-	int cambioAtaque = dummy->getAtaqueBase() + 5; // Valor temporal
-	dummy->setAtaqueBase(cambioAtaque);
+	return 2;
 }

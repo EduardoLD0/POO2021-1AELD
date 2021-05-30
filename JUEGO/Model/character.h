@@ -29,6 +29,7 @@ public:
 	Arma& getArma();
 	Posicion getPosicion();
 	std::string getNombre();
+	void agregarAtaque(Ataque *);
 	virtual Ataque* seleccionarAtaque(int) = 0;
 };
 #endif 
