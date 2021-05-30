@@ -43,7 +43,23 @@ Enemigo* ControllerInicializador::crearMago()
 {
 	Ataque* pAtaque1 = new AtaqueComun();
 	Ataque* pAtaque2 = new AtaqueCuracion();
-	return crearEnemigo("Guerrero", Arma("Baston", 8, 10), 5, {pAtaque1, pAtaque2}, 3);
+	return crearEnemigo("Mago", Arma("Baston", 8, 10), 5, {pAtaque1, pAtaque2}, 3);
+}
+
+Enemigo* ControllerInicializador::crearGuerreroBoss()
+{
+	Ataque* pAtaque1 = new AtaqueComun();
+	Ataque* pAtaque2 = new AtaqueParalizador();
+	Ataque* pAtaque3 = new AtaqueResistencia();
+	return crearEnemigo("Guerrero Boss", Arma("Espada Legendaria", 20, 10), 20, {pAtaque1, pAtaque2, pAtaque3}, 5);
+}
+
+Enemigo* ControllerInicializador::crearMagoBoss()
+{
+	Ataque* pAtaque1 = new AtaqueComun();
+	Ataque* pAtaque2 = new AtaqueCuracion();
+	Ataque* pAtaque3 = new AtaqueParalizador();
+	return crearEnemigo("Mago Boss", Arma("Baston de Gandalf", 25, 11), 5, {pAtaque1, pAtaque2, pAtaque3}, 2);
 }
 
 Pocion* ControllerInicializador::crearPocion(tipoEfecto tipo)

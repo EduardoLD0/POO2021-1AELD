@@ -27,7 +27,7 @@ private:
 	list<Ataque*> listaAtaques;
 	map<Posicion*, Pocion*> listaPocionesSuelo;
 	map<Posicion*, Arma*> listaArmasSuelo;
-	map<Posicion*, Enemigo*> listaEnemigosSuelo;
+	map<Posicion*, Enemigo> listaEnemigosSuelo;
 	bool artefactoEncontrado, gameOver;
 	int contadorCombate;
 public:
@@ -35,6 +35,7 @@ public:
 	void generarPocion();
 	void generarArma();
 	void generarEnemigo();
+	void generarBoss();
 	void actualizarItem();
 	Posicion* verPosicionSiguiente(direccion);
 	int moverPersonaje(direccion);
@@ -42,7 +43,7 @@ public:
 	void setContadorCombate(int);
 	Pocion* getPocion(Posicion*);
 	Arma* getArma(Posicion*);
-	Enemigo* getEnemigo(Posicion*);
+	Enemigo getEnemigo(Posicion*);
 	Heroe* getHeroe();
 	Posicion* getPosHeroe();
 	void mostrarMazmorra();

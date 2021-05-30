@@ -30,32 +30,56 @@ void View::inventario()
 {
     int opcion;
     Heroe* pHeroe = controllerJ->getHeroe();
-    cout << "Que desea hacer?" << endl;
-    cout << "1. Usar pocion" << endl;
-    cout << "2. Seleccionar arma" << endl;
-    cin >> opcion;
-    switch(opcion)
+    try
     {
-    case 1:
-        cout << "Escoja una pocion:" << endl;
-        pHeroe->mostrarListaPociones();
+        cout << "Que desea hacer?" << endl;
+        cout << "1. Usar pocion" << endl;
+        cout << "2. Seleccionar arma" << endl;
         cin >> opcion;
-        pHeroe->usarPocion(opcion);
-        break;
-    case 2:
-        cout << "Escoje un arma:" << endl;
-        pHeroe->mostrarListaArmas();
-        cin >> opcion;
-        pHeroe->seleccionarArma(opcion);
-        break;
+        switch(opcion)
+        {
+        case 1:
+            if(!pHeroe->revisarItem(tipoItem::pocion))
+            {
+                throw domain_error("Usted no tiene pociones");
+            }
+            cout << "Escoja una pocion:" << endl;
+            pHeroe->mostrarListaPociones();
+            cin >> opcion;
+            pHeroe->usarPocion(opcion);
+            break;
+        case 2:
+        if(pHeroe->getArma()->getNombre() != "Sin arma")
+        {
+            throw domain_error("Usted ya tiene un arma equipada");
+        }
+        if(!pHeroe->revisarItem(tipoItem::arma))
+        {
+            throw domain_error("Usted no tiene armas");
+        }
+            cout << "Escoje un arma:" << endl;
+            pHeroe->mostrarListaArmas();
+            cin >> opcion;
+            pHeroe->seleccionarArma(opcion);
+            break;
+        }
     }
+    catch(const domain_error& e)
+    {
+        cout << e.what() << '\n';
+    }
+    
+    
+    
 }
 
 void View::evento(int evento)
 {
     int opcion;
     Heroe * pHeroe = controllerJ->getHeroe();
-    Enemigo * pEnemigo;
+    Enemigo * pEnemigo = new Enemigo();
+    Pocion * pPocion = new PocionVida();
+    Arma * pArma = new Arma();
     switch(evento)
     {
     case 1:
@@ -78,8 +102,7 @@ void View::evento(int evento)
                 cout << "Ingrese una opcion valida" << endl;
             }
         } while(opcion < 1 || opcion > 2);
-        pEnemigo = controllerJ->getEnemigo(controllerJ->getPosHeroe());
-        cout << pHeroe->getPosicion()->getX() << pHeroe->getPosicion()->getY();
+        *pEnemigo = controllerJ->getEnemigo(controllerJ->getPosHeroe());
         controllerJ->setGameOver(controllerC->combatir(pHeroe, pEnemigo));
         controllerJ->setContadorCombate(controllerJ->getContadorCombate() + 1);
         if(controllerJ->getContadorCombate() % 3 == 0)
@@ -92,16 +115,40 @@ void View::evento(int evento)
         }
         break;
     case 2:
-        pHeroe->recogerPocion(controllerJ->getPocion(controllerJ->getPosHeroe()));
+        try
+        {
+            pHeroe->recogerPocion(controllerJ->getPocion(controllerJ->getPosHeroe()));
+        }
+        catch(const std::domain_error& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
         break;
     case 3:
-        pHeroe->recogerPocion(controllerJ->getPocion(controllerJ->getPosHeroe()));
+    try
+        {
+            pHeroe->recogerArma(controllerJ->getArma(controllerJ->getPosHeroe()));
+        }
+        catch(const std::domain_error& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
         break;
     case 4:
         cout << "Felicidades, haz ganado el juego" << endl;
         controllerJ->setGameOver(1);
         break;
     }
+}
+
+void View::estado()
+{
+    cout << "Hertz:" << endl;
+    cout << "Vida: " << controllerJ->getHeroe()->getVida() << endl;
+    cout << "Puntos de ataque: " << controllerJ->getHeroe()->getAtaqueBase() << endl;
+    cout << "Arma: " << controllerJ->getHeroe()->getArma()->getNombre() << endl;
+    cout << "Resistencia arma: " << controllerJ->getHeroe()->getArma()->getResistencia() << endl;
+    cout << "Puntos de ataque arma: " << controllerJ->getHeroe()->getArma()->getPuntosAtaque() << endl;
 }
 
 void View::entrada(char letra)
@@ -124,6 +171,9 @@ void View::entrada(char letra)
     case 'I':
         inventario();
         evento = 0;
+        break;
+    case 'E':
+        estado();
         break;
     }
     this->evento(evento);

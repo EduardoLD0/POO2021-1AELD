@@ -18,6 +18,7 @@ class Enemigo : public Character
 private:
 	tipoEnemigo tipoE;
 public:
+	Enemigo();
 	Enemigo(std::string, Arma, int, list<Ataque*>, int);
 	Ataque *seleccionarAtaque(int);
 	tipoEnemigo getTipoEnemigo();

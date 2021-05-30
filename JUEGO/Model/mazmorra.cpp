@@ -11,8 +11,8 @@ Mazmorra::Mazmorra(nivel nivelMazmorra)
 	}
 	else
 	{
-		this->cantidadEnemigos = 25;
-		tamano = 15;
+		this->cantidadEnemigos = 35;
+		tamano = 25;
 	}
 	for(y = tamano - 1; y >= 0; --y)
 	{
@@ -89,29 +89,31 @@ void Mazmorra::generarLaberinto()
 	}
 }
 
-pair<Posicion*, Enemigo*> Mazmorra::agregarEnemigo()
+Posicion* Mazmorra::agregarEnemigo()
 {
 	srand(time(NULL));
 	int numEnemigos = 0, numAleatorio;
-	Enemigo* pEnemigo;
 	Posicion* pArriba, * pAbajo, * pIzq, * pDer;
-	for (list<Posicion*>::iterator it = matriz.begin(); it != matriz.end(); ++it)
+	do
 	{
-		numAleatorio = 1 + rand() % tamano;
-		pArriba = encontrarPosicion((*it)->getX(), (*it)->getY() + 1);
-		pAbajo = encontrarPosicion((*it)->getX(), (*it)->getY() - 1);
-		pIzq = encontrarPosicion((*it)->getX() - 1, (*it)->getY());
-		pDer = encontrarPosicion((*it)->getX() + 1, (*it)->getY());
-		if ((*it)->getElemento() == tipoElemento::vacio && numAleatorio == 1 &&
-			pArriba->getElemento() != tipoElemento::enemigo && pAbajo->getElemento() != tipoElemento::enemigo &&
-			pIzq->getElemento() != tipoElemento::enemigo && pDer->getElemento() != tipoElemento::enemigo)
+		for (list<Posicion*>::iterator it = matriz.begin(); it != matriz.end(); ++it)
 		{
-			(*it)->setElemento(tipoElemento::enemigo);
-			++numEnemigos;
-			return pair<Posicion*,Enemigo*>(*it, pEnemigo);
-			break;
+			numAleatorio = 1 + rand() % tamano;
+			pArriba = encontrarPosicion((*it)->getX(), (*it)->getY() + 1);
+			pAbajo = encontrarPosicion((*it)->getX(), (*it)->getY() - 1);
+			pIzq = encontrarPosicion((*it)->getX() - 1, (*it)->getY());
+			pDer = encontrarPosicion((*it)->getX() + 1, (*it)->getY());
+			if ((*it)->getElemento() == tipoElemento::vacio && numAleatorio == 1 &&
+				pArriba->getElemento() != tipoElemento::enemigo && pAbajo->getElemento() != tipoElemento::enemigo &&
+				pIzq->getElemento() != tipoElemento::enemigo && pDer->getElemento() != tipoElemento::enemigo)
+			{
+				(*it)->setElemento(tipoElemento::enemigo);
+				++numEnemigos;
+				return *it;
+				break;
+			}
 		}
-	}
+	} while(1);
 }
 
 void Mazmorra::pintar()
@@ -157,10 +159,9 @@ void Mazmorra::pintar()
 	}
 }
 
-pair<Posicion *, Arma *> Mazmorra::agregarArma()
+Posicion* Mazmorra::agregarArma()
 {
 	srand(time(NULL));
-	Arma * pArma;
 	Posicion * pPosicion;
 	int x, y;
 	do
@@ -171,13 +172,12 @@ pair<Posicion *, Arma *> Mazmorra::agregarArma()
 	} while (pPosicion->getElemento() != tipoElemento::vacio);
 	pPosicion->setElemento(tipoElemento::arma);
 	pPosicion->setTurnosSpawn(3);
-	return pair<Posicion*, Arma*>(pPosicion, pArma);
+	return pPosicion;
 }
 
-pair<Posicion *, Pocion *> Mazmorra::agregarPocion()
+Posicion* Mazmorra::agregarPocion()
 {
 	srand(time(NULL));
-	Pocion * pPocion;
 	Posicion * pPosicion;
 	int x, y;
 	do
@@ -188,7 +188,7 @@ pair<Posicion *, Pocion *> Mazmorra::agregarPocion()
 	} while (pPosicion->getElemento() != tipoElemento::vacio);
 	pPosicion->setElemento(tipoElemento::pocion);
 	pPosicion->setTurnosSpawn(3);
-	return pair<Posicion*, Pocion*>(pPosicion, pPocion);
+	return pPosicion;
 }
 
 Posicion * Mazmorra::agregarObjeto(tipoElemento elemento)

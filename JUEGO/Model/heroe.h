@@ -20,7 +20,7 @@ public:
 	void seleccionarArma(int);
 	void recogerPocion(Pocion*);
 	void recogerArma(Arma*);
-	bool revisarItem(tipoItem);
+	int revisarItem(tipoItem);
 	void eliminarArmaLista(Arma*);
 	Ataque* seleccionarAtaque(int);
 	void mostrarListaPociones();

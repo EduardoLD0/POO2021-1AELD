@@ -1,5 +1,10 @@
 #include "enemigo.h"
 
+Enemigo::Enemigo()
+{
+	
+}
+
 Enemigo::Enemigo(std::string nombre, Arma arma, int vida, list<Ataque*>listaAtaques, int ataqueBase) 
 {
 	this->nombre = nombre;

@@ -25,53 +25,65 @@ ControllerJuego::ControllerJuego(nivel nivelMazmorra)
 	listaAtaques.push_back(controllerI->crearAtaque(tipoAtaque::turno));
 	listaEnemigos.push_back(controllerI->crearGuerrero());
 	listaEnemigos.push_back(controllerI->crearMago());
+	listaEnemigos.push_back(controllerI->crearGuerreroBoss());
+	listaEnemigos.push_back(controllerI->crearMagoBoss());
 	
 	for(i = 0; i < mazmorra->getCantidadEnemigos(); ++i)
 	{
 		generarEnemigo();
+	}
+	for(i = 0; i < mazmorra->getCantidadEnemigos() / 10; ++i)
+	{
+		generarBoss();
 	}
 }
 
 void ControllerJuego::generarPocion()
 {
 	srand(time(NULL));
-	pair<Posicion*,Pocion*> pocionTemp = mazmorra->agregarPocion();
-	listaPocionesSuelo.insert(pocionTemp);
+	Posicion* pPosicion = mazmorra->agregarPocion();
 	list<Pocion*>::iterator it = listaPociones.begin();
 	int aleatorio = rand() % listaPociones.size();
 	it = std::next(listaPociones.begin(), aleatorio);
-	pocionTemp.second = *it;
+	listaPocionesSuelo.insert(pair<Posicion*, Pocion*>(pPosicion, *it));
 }
 
 void ControllerJuego::generarArma()
 {
 	srand(time(NULL));
-	pair<Posicion*,Arma*> armaTemp = mazmorra->agregarArma();
-	listaArmasSuelo.insert(armaTemp);
+	Posicion* pPosicion = mazmorra->agregarArma();
 	list<Arma*>::iterator it = listaArmas.begin();
 	int aleatorio = rand() % listaArmas.size();
 	it = std::next(listaArmas.begin(), aleatorio);
-	armaTemp.second = *it;
+	listaArmasSuelo.insert(pair<Posicion*, Arma*>(pPosicion, *it));
 }
 
 void ControllerJuego::generarEnemigo()
 {
 	srand(time(NULL));
-	Enemigo* pEnemigo;
-	pair<Posicion*,Enemigo*> enemigoTemp = mazmorra->agregarEnemigo();
-	listaEnemigosSuelo.insert(enemigoTemp);
-	list<Enemigo*>::iterator it = listaEnemigos.begin();
-	int aleatorio = rand() % listaEnemigos.size();
-	it = std::next(listaEnemigos.begin(), aleatorio);
-	switch((*it)->getTipoEnemigo())
+	Posicion* pPosicion = mazmorra->agregarEnemigo();
+	list<Enemigo*>::iterator it;
+	int aleatorio;
+	do
 	{
-		case(tipoEnemigo::guerrero):
-			enemigoTemp.second = controllerI->crearGuerrero();
-			break;
-		case(tipoEnemigo::mago):
-			enemigoTemp.second = controllerI->crearMago();
-			break;
-	}
+		aleatorio = rand() % listaEnemigos.size();
+		it = std::next(listaEnemigos.begin(), aleatorio);
+	} while((*it)->getTipoEnemigo() == tipoEnemigo::guerrero || (*it)->getTipoEnemigo() == tipoEnemigo::mago);
+	listaEnemigosSuelo.insert(pair<Posicion*, Enemigo>(pPosicion, **it));
+}
+
+void ControllerJuego::generarBoss()
+{
+	srand(time(NULL));
+	Posicion* pPosicion = mazmorra->agregarEnemigo();
+	list<Enemigo*>::iterator it;
+	int aleatorio;
+	do
+	{
+		aleatorio = rand() % listaEnemigos.size();
+		it = std::next(listaEnemigos.begin(), aleatorio);
+	} while((*it)->getTipoEnemigo() == tipoEnemigo::guerreroBoss || (*it)->getTipoEnemigo() == tipoEnemigo::magoBoss);
+	listaEnemigosSuelo.insert(pair<Posicion*, Enemigo>(pPosicion, **it));
 }
 
 void ControllerJuego::actualizarItem()
@@ -133,7 +145,7 @@ Posicion* ControllerJuego::verPosicionSiguiente(direccion dir)
 
 int ControllerJuego::moverPersonaje(direccion dir)
 {
-	int salida, opcion;
+	int salida = 0, opcion;
 	Posicion* pPosicion = verPosicionSiguiente(dir);
 	switch(pPosicion->getElemento())
 	{
@@ -149,9 +161,16 @@ int ControllerJuego::moverPersonaje(direccion dir)
 			cin >> opcion;
 			if(opcion == 1)
 			{
-				heroe->getPosicion()->setElemento(tipoElemento::vacio);
-				heroe->setPosicion(pPosicion);
-				salida = 2;
+				if(heroe->revisarItem(tipoItem::arma) + heroe->revisarItem(tipoItem::pocion) >= 10)
+				{
+					cout << "No tienes espacio" << endl;
+				}
+				else
+				{
+					heroe->getPosicion()->setElemento(tipoElemento::vacio);
+					heroe->setPosicion(pPosicion);
+					salida = 3;
+				}
 			}
 			else
 			{
@@ -160,14 +179,21 @@ int ControllerJuego::moverPersonaje(direccion dir)
 			break;
 		case(tipoElemento::arma):
 			cout << "Desea recoger el arma?" << endl;
-			cout << "1. Si" << endl;
-			cout << "2. No" << endl;
+			cout << "1. Si." << endl;
+			cout << "2. No." << endl;
 			cin >> opcion;
 			if(opcion == 1)
 			{
-				heroe->getPosicion()->setElemento(tipoElemento::vacio);
-				heroe->setPosicion(pPosicion);
-				salida = 3;
+				if(heroe->revisarItem(tipoItem::arma) + heroe->revisarItem(tipoItem::pocion) >= 10)
+				{
+					cout << "No tienes espacio" << endl;
+				}
+				else
+				{
+					heroe->getPosicion()->setElemento(tipoElemento::vacio);
+					heroe->setPosicion(pPosicion);
+					salida = 3;
+				}
 			}
 			else
 			{
@@ -221,9 +247,9 @@ Arma* ControllerJuego::getArma(Posicion* pPosicion)
 	return listaArmasSuelo.find(pPosicion)->second;
 }
 
-Enemigo* ControllerJuego::getEnemigo(Posicion* pPosicion)
+Enemigo ControllerJuego::getEnemigo(Posicion* pPosicion)
 {
-	return listaEnemigosSuelo.find(pPosicion)->second;
+	return (listaEnemigosSuelo.find(pPosicion)->second);
 }
 
 Heroe* ControllerJuego::getHeroe()

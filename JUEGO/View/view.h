@@ -16,6 +16,7 @@ class View
         void juego(int);
         void entrada(char);
         void evento(int);
+        void estado();
 };
 
 #endif

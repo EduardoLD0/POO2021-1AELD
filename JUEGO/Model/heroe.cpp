@@ -5,7 +5,7 @@ Heroe::Heroe()
 	this->nombre = "Hertz";
 	this->vida = 30;
 	this->ataqueBase = 5;
-	this->arma = Arma("Sin Arma", -1, 0);
+	this->arma = Arma("Sin arma", -1, 0);
 }
 
 int Heroe::usarPocion(int numPocion)
@@ -46,7 +46,7 @@ void Heroe::recogerArma(Arma* arma)
 	listaArmas.push_back(arma);
 }
 
-bool Heroe::revisarItem(tipoItem tipo)
+int Heroe::revisarItem(tipoItem tipo)
 {
 	if(tipo == tipoItem::pocion)
 	{
