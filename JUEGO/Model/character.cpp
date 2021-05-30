@@ -1,10 +1,5 @@
 #include "character.h"
 
-Character::Character()
-{
-
-}
-
 void Character::setVida(int vida)
 {
 	this->vida = vida;
@@ -36,4 +31,9 @@ Posicion Character::getPosicion()
 Arma& Character::getArma()
 {
 	return arma;
+}
+
+std::string Character::getNombre()
+{
+	return this->nombre;
 }

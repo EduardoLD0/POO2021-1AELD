@@ -1,7 +1,8 @@
 #include "arma.h"
 
-Arma::Arma(int resistencia, int puntosAtaque)
+Arma::Arma(std::string nombre, int resistencia, int puntosAtaque)
 {
+	this->nombre = nombre;
 	this->resistencia = resistencia;
 	this->puntosAtaque = puntosAtaque;
 }
@@ -24,4 +25,9 @@ void Arma::setResistencia(int resistencia)
 void Arma::setPuntosAtaque(int puntosAtaque)
 {
 	this->puntosAtaque = puntosAtaque;
+}
+
+std::string Arma::getNombre()
+{
+	return this->nombre;
 }

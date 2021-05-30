@@ -9,6 +9,7 @@ protected:
 	std::string nombre;
 public:
 	virtual int aplicarEfecto() = 0;
+	std::string getNombre();
 };
 
 #endif

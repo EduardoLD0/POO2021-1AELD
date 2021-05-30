@@ -13,6 +13,7 @@ using namespace std;
 class Character 
 {
 protected:
+	std::string nombre;
 	int vida;	
 	int ataqueBase;
 	Posicion posicion;
@@ -27,5 +28,7 @@ public:
 	void setPosicion(Posicion);
 	Arma& getArma();
 	Posicion getPosicion();
+	std::string getNombre();
+	virtual Ataque* seleccionarAtaque(int) = 0;
 };
 #endif 

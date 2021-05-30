@@ -1,5 +1,13 @@
 #include "heroe.h"
 
+Heroe::Heroe()
+{
+	this->nombre = "Hertz";
+	this->vida = 30;
+	this->ataqueBase = 5;
+	this->arma = Arma("Sin Arma", -1, 0);
+}
+
 int Heroe::usarPocion(int numPocion)
 {
 	list<Pocion*>::iterator it = std::next(listaPociones.begin(), numPocion - 1);

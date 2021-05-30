@@ -7,12 +7,10 @@
 
 class Enemigo : public Character
 {
-private:
-	
 public:
-	Enemigo(Arma, int, list<Ataque*>, int);
+	Enemigo(std::string, Arma, int, list<Ataque*>, int);
 	void agregarAtaque(Ataque *);
-	Ataque *seleccionarAtaque();
+	Ataque *seleccionarAtaque(int);
 };
 
 #endif

@@ -1,8 +1,8 @@
 #include "enemigo.h"
 
-
-Enemigo::Enemigo(Arma arma, int vida, list<Ataque*>listaAtaques, int ataqueBase) 
+Enemigo::Enemigo(std::string nombre, Arma arma, int vida, list<Ataque*>listaAtaques, int ataqueBase) 
 {
+	this->nombre = nombre;
 	this->arma = arma;
 	this->vida = vida;
 	this->ataqueBase = ataqueBase;
@@ -14,14 +14,11 @@ void Enemigo::agregarAtaque(Ataque *ataque)
 	this->listaAtaques.push_back(ataque);
 }
 
-Ataque *Enemigo::seleccionarAtaque()
+Ataque *Enemigo::seleccionarAtaque(int num)
 {
 	int aleatorio = rand() % listaAtaques.size(), i;
-	list<Ataque*>::iterator it = listaAtaques.begin();
-	for (i = 0; i <= aleatorio; ++i)
-	{
-		++it;
-	}
+	list<Ataque*>::iterator it;
+	it = std::next(listaAtaques.begin(), aleatorio);
 	return *it;
 }
 

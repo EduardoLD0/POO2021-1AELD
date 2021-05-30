@@ -4,7 +4,7 @@ bool ControllerCombate::combatir(Heroe* hertz, Enemigo* enemigo)
 {
 	int opcion;
 	// Turno Hertz
-	cout << "¿Que ataque desea usar?" << endl;
+	cout << "ï¿½Que ataque desea usar?" << endl;
 	if (hertz->getArma().getResistencia() == 0)
 	{
 		cout << "1. Atacar a puno" << "\n";

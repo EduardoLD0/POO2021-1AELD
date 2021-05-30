@@ -13,7 +13,7 @@ enum class tipoItem
 class Item
 {
 protected:
-	tipoItem tipoItem;
+	tipoItem tipoI;
 public:
 	~Item();
 	tipoItem getTipo();
