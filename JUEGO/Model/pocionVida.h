@@ -7,6 +7,7 @@
 class PocionVida : public Pocion
 {
 public:
+	PocionVida();
 	int aplicarEfecto() override;
 };
 

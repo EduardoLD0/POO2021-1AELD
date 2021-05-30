@@ -5,7 +5,7 @@ std::string Ataque::getNombre()
     return this->nombre;
 }
 
-tipoAtaque getTipoAtaque()
+tipoAtaque Ataque::getTipoAtaque()
 {
     return this->tipo;
 }

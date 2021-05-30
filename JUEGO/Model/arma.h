@@ -9,6 +9,7 @@ private:
 	std::string nombre;
 	int resistencia, puntosAtaque;
 public:
+	Arma();
 	Arma(std::string, int, int);
 	int getResistencia();
 	int getPuntosAtaque();

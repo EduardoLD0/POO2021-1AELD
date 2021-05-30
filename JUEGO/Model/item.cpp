@@ -7,10 +7,10 @@ Item::~Item()
 
 tipoItem Item::getTipo()
 {
-	return this->tipo;
+	return this->tipoI;
 }
 
 void Item::setTipo(tipoItem tipo)
 {
-	this->tipo = tipo;
+	this->tipoI = tipo;
 }

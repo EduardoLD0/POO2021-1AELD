@@ -6,8 +6,8 @@ MODEL := Model
 debug := -ggdb3
 
 all: programa
-programa: controllerJuego controllerInicializador controllerCombate character heroe enemigo item pocion pocionVida pocionDefensa pocionDebilidad pocionAtaque arma ataque ataqueComun ataqueDebilitador ataqueResistencia ataqueCuracion ataqueParalizador posicion mazmorra
-	g++ ${debug} -o  a.exe controllerJuego.o controllerInicializador.o controllerCombate.o character.o heroe.o enemigo.o item.o pocion.o pocionVida.o pocionDefensa.o pocionDebilidad.o pocionAtaque.o arma.o ataque.o ataqueComun.o ataqueDebilitador.o ataqueResistencia.o ataqueCuracion.o ataqueParalizador.o posicion.o mazmorra.o
+programa: controllerJuego controllerInicializador controllerCombate character heroe enemigo item pocion pocionVida pocionDefensa pocionDebilitadora pocionAtaque arma ataque ataqueComun ataqueDebilitador ataqueResistencia ataqueCuracion ataqueParalizador posicion mazmorra
+	g++ ${debug} -o  a.exe controllerJuego.o controllerInicializador.o controllerCombate.o character.o heroe.o enemigo.o item.o pocion.o pocionVida.o pocionDefensa.o pocionDebilitadora.o pocionAtaque.o arma.o ataque.o ataqueComun.o ataqueDebilitador.o ataqueResistencia.o ataqueCuracion.o ataqueParalizador.o posicion.o mazmorra.o
 controllerJuego: ${CONTROLLER}/controllerJuego.cpp ${CONTROLLER}/controllerJuego.h
 	g++ -c ${debug} ${CONTROLLER}/controllerJuego.cpp
 controllerInicializador: ${CONTROLLER}/controllerInicializador.cpp ${CONTROLLER}/controllerInicializador.h
@@ -28,8 +28,8 @@ pocionVida: ${MODEL}/pocionVida.cpp ${MODEL}/pocionVida.h
 	g++ -c ${debug} ${MODEL}/pocionVida.cpp
 pocionDefensa: ${MODEL}/pocionDefensa.cpp ${MODEL}/pocionDefensa.h
 	g++ -c ${debug} ${MODEL}/pocionDefensa.cpp
-pocionDebilidad: ${MODEL}/pocionDebilidad.cpp ${MODEL}/pocionDebilidad.h
-	g++ -c ${debug} ${MODEL}/pocionDebilidad.cpp
+pocionDebilitadora: ${MODEL}/pocionDebilitadora.cpp ${MODEL}/pocionDebilitadora.h
+	g++ -c ${debug} ${MODEL}/pocionDebilitadora.cpp
 pocionAtaque: ${MODEL}/pocionAtaque.cpp ${MODEL}/pocionAtaque.h
 	g++ -c ${debug} ${MODEL}/pocionAtaque.cpp
 arma: ${MODEL}/arma.cpp ${MODEL}/arma.h

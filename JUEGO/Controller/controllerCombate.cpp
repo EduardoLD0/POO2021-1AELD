@@ -43,9 +43,22 @@ bool ControllerCombate::combatir(Heroe* hertz, Enemigo* enemigo)
 			turnosPerdidos = 3;
 		}
 	} while(hertz->getVida() > 0 && enemigo->getVida() > 0);
+	if(enemigo->getTipoEnemigo() == tipoEnemigo::guerreroBoss)
+	{
+		cout << "Tu recompensa es: 10 de vida";
+		hertz->setVida(hertz->getVida() + 10);
+	}
+	if(hertz->getVida() <= 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
 }
 
-void atacar(Character* atacante, Character* atacado, Ataque* ataque)
+void ControllerCombate::atacar(Character* atacante, Character* atacado, Ataque* ataque)
 {
 	switch(ataque->getTipoAtaque())
 	{

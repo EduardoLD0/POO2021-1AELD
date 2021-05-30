@@ -6,6 +6,7 @@
 class AtaqueComun : public Ataque
 {
 public:
+	AtaqueComun();
 	int aplicarEfecto();
 };
 

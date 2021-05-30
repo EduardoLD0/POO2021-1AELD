@@ -6,6 +6,7 @@
 class PocionDebilitadora : public Pocion
 {
 public:
+	PocionDebilitadora();
 	int aplicarEfecto() override;
 };
 

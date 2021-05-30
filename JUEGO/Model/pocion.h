@@ -18,7 +18,6 @@ protected:
 	std::string nombre;
 	tipoEfecto tipo;
 public:
-	~Pocion();
 	tipoEfecto getTipoEfecto();
 	virtual int aplicarEfecto() = 0;
 	std::string getNombre();

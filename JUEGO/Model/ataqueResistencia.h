@@ -7,6 +7,7 @@
 class AtaqueResistencia : public Ataque
 {
 public:
+	AtaqueResistencia();
 	int aplicarEfecto();
 };
 

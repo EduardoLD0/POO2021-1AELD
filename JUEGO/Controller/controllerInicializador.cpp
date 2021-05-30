@@ -84,5 +84,5 @@ Heroe* ControllerInicializador::crearHeroe()
 	Ataque* pAtaque2 = new AtaqueDebilitador();
 	pHeroe->agregarAtaque(pAtaque);
 	pHeroe->agregarAtaque(pAtaque2);
-
+return pHeroe;
 }

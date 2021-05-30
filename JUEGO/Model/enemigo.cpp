@@ -17,6 +17,11 @@ Ataque *Enemigo::seleccionarAtaque(int num)
 	return *it;
 }
 
+tipoEnemigo Enemigo::getTipoEnemigo()
+{
+	return this->tipoE;
+}
+
 	/*\o/
 	   |
 	  / \*/

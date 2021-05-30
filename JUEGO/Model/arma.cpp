@@ -1,5 +1,10 @@
 #include "arma.h"
 
+Arma::Arma()
+{
+	
+}
+
 Arma::Arma(std::string nombre, int resistencia, int puntosAtaque)
 {
 	this->nombre = nombre;

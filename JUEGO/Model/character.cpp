@@ -1,5 +1,10 @@
 #include "character.h"
 
+Character::Character()
+{
+
+}
+
 void Character::setVida(int vida)
 {
 	this->vida = vida;

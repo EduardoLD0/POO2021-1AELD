@@ -6,6 +6,7 @@
 class AtaqueDebilitador : public Ataque
 {
 public:
+	AtaqueDebilitador();
 	int aplicarEfecto();
 };
 

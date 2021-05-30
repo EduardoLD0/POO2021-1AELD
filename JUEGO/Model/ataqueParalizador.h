@@ -6,6 +6,7 @@
 class AtaqueParalizador : public Ataque
 {
 public:
+	AtaqueParalizador();
 	int aplicarEfecto();
 };
 

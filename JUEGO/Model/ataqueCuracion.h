@@ -6,6 +6,7 @@
 class AtaqueCuracion : public Ataque
 {
 public:
+	AtaqueCuracion();
 	int aplicarEfecto();
 };
 
