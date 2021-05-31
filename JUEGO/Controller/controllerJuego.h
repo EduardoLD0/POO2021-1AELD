@@ -32,16 +32,16 @@ private:
 	int contadorCombate;
 public:
 	ControllerJuego(nivel);
-	void generarPocion();
+	void generarPocion();	// Genera en el piso
 	void generarArma();
 	void generarEnemigo();
 	void generarBoss();
-	void actualizarItem();
-	Posicion* verPosicionSiguiente(direccion);
-	int moverPersonaje(direccion);
+	void actualizarItem();	// Cada 3 turnos un arma o pocion desaparecen del piso
+	Posicion* verPosicionSiguiente(direccion);	// Devuelve la posicion a la que el jugador va a moverse
+	int moverPersonaje(direccion);	// Mueve al jugador e indica que hacer despues
 	int getContadorCombate();
 	void setContadorCombate(int);
-	Pocion* getPocion(Posicion*);
+	Pocion* getPocion(Posicion*);	// Busca por la posicion en el map
 	Arma* getArma(Posicion*);
 	Enemigo getEnemigo(Posicion*);
 	Heroe* getHeroe();

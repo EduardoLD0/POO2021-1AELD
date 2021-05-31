@@ -75,7 +75,7 @@ bool View::inventario()
 }
 
 void View::evento(int evento)
-{
+{   // Un evento ocurrira dependiendo de la casilla en donde esta el jugador
     int opcion, arrojarPocion = 0;
     Heroe * pHeroe = controllerJ->getHeroe();
     Enemigo * pEnemigo = new Enemigo();
@@ -83,7 +83,7 @@ void View::evento(int evento)
     Arma * pArma = new Arma();
     switch(evento)
     {
-    case 1:
+    case 1: // Se encuentra con un enemigo
         do{
             cout << "Una batalla esta por empezar." << endl;
             cout << "Desea equipar un arma / usar una pocion?" << endl;
@@ -95,7 +95,7 @@ void View::evento(int evento)
             case 0:
                 break;
             case 1:
-                arrojarPocion = inventario();
+                arrojarPocion = inventario();   // Abrir inventario
                 break;
             case 2:
                 break;
@@ -104,52 +104,38 @@ void View::evento(int evento)
             }
         } while(opcion < 1 || opcion > 2);
         *pEnemigo = controllerJ->getEnemigo(controllerJ->getPosHeroe());
-        if(arrojarPocion)
+        if(arrojarPocion)   // Si eligio la pocion de daño le hara daño al enemigo antes de combatir
         {
             pEnemigo->setVida(pEnemigo->getVida() - 5);
         }
-        controllerJ->setGameOver(controllerC->combatir(pHeroe, pEnemigo));
-        controllerJ->setContadorCombate(controllerJ->getContadorCombate() + 1);
+        controllerJ->setGameOver(controllerC->combatir(pHeroe, pEnemigo));  // Dependiendo del resultado del combate el juego sigue o termina
+        controllerJ->setContadorCombate(controllerJ->getContadorCombate() + 1); // Aumenta en 1 el contador de combate
         if(controllerJ->getContadorCombate() % 3 == 0)
         {
-            controllerJ->generarPocion();
+            controllerJ->generarPocion();   // Cada 3 combates se genera una pocion
         }
         if(controllerJ->getContadorCombate() % 2 == 0)
         {
-            controllerJ->generarArma();
+            controllerJ->generarArma();     // Cada 2 combates se genera un arma
         }
         break;
-    case 2:
-        try
-        {
-            pHeroe->recogerPocion(controllerJ->getPocion(controllerJ->getPosHeroe()));
-            controllerJ->actualizarItem();
-        }
-        catch(const std::domain_error& e)
-        {
-            cout << e.what() << '\n';
-        }
+    case 2: // Se encuentra una pocion, ha decidido recogerla y tiene espacio
+        pHeroe->recogerPocion(controllerJ->getPocion(controllerJ->getPosHeroe()));
+        controllerJ->actualizarItem();  // Recoger una pocion gasta un turno
         break;
-    case 3:
-    try
-        {
-            pHeroe->recogerArma(controllerJ->getArma(controllerJ->getPosHeroe()));
-            controllerJ->actualizarItem();
-        }
-        catch(const std::domain_error& e)
-        {
-            cout << e.what() << '\n';
-        }
+    case 3: // Se encontro un arma, ha decidido recogerla y tiene espacio
+        pHeroe->recogerArma(controllerJ->getArma(controllerJ->getPosHeroe()));
+        controllerJ->actualizarItem(); // Recoger un arma gasta un turno
         break;
-    case 4:
+    case 4: // Salio por la puerta abierta
         cout << "Felicidades, haz ganado el juego" << endl;
-        controllerJ->setGameOver(1);
+        controllerJ->setGameOver(1);    // Juego terminado
         break;
     }
 }
 
 void View::estado()
-{
+{   // Stats del jugador
     cout << "Hertz:" << endl;
     cout << "Vida: " << controllerJ->getHeroe()->getVida() << endl;
     cout << "Puntos de ataque: " << controllerJ->getHeroe()->getAtaqueBase() << endl;
@@ -159,10 +145,10 @@ void View::estado()
 }
 
 void View::entrada(char letra)
-{
-    int evento;
+{   // Letra escrita en consola
+    int evento = 0;
     switch(letra)
-    {
+    { // WASD = moverse, I = abrir inventario, E = ver estado del jugador
     case 'W':
         evento = controllerJ->moverPersonaje(direccion::arriba);
         break;
@@ -177,17 +163,16 @@ void View::entrada(char letra)
         break;
     case 'I':
         inventario();
-        evento = 0;
         break;
     case 'E':
         estado();
         break;
     }
-    this->evento(evento);
+    this->evento(evento);   // Un evento se ejecutara si el usuario se mueve
 }
 
 void View::juego(int dificultad)
-{
+{   // Se crea la mazmorra con el nivel de dificultad escogido
     switch(dificultad)
     {
     case 1:

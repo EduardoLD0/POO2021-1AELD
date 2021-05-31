@@ -33,7 +33,6 @@ public:
 	Ataque* crearAtaque(tipoAtaque);
 	Mazmorra* crearMazmorra(nivel);
 	Heroe* crearHeroe();
-	// Crear funcion crearEnemigo y llamar por medio de las otras funciones
 };
 
 #endif

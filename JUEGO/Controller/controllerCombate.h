@@ -14,7 +14,7 @@ private:
 	int contadorTurno;
 public:
 	ControllerCombate(ControllerJuego*);
-	bool combatir(Heroe*, Enemigo*); // 0 = Perdio el combate, 1 = Gano el combate
+	bool combatir(Heroe*, Enemigo*); // 1 = Perdio el combate, 0 = Gano el combate
 	void atacar(Character*, Character*, Ataque*);
 };
 
