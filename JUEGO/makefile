@@ -7,7 +7,7 @@ debug := -ggdb3
 
 all: programa
 programa: main view controllerJuego controllerInicializador controllerCombate character heroe enemigo item pocion pocionVida pocionDefensa pocionDebilitadora pocionAtaque arma ataque ataqueComun ataqueDebilitador ataqueResistencia ataqueCuracion ataqueParalizador posicion mazmorra
-	g++ ${debug} -o  a.exe main.o view.o controllerJuego.o controllerInicializador.o controllerCombate.o character.o heroe.o enemigo.o item.o pocion.o pocionVida.o pocionDefensa.o pocionDebilitadora.o pocionAtaque.o arma.o ataque.o ataqueComun.o ataqueDebilitador.o ataqueResistencia.o ataqueCuracion.o ataqueParalizador.o posicion.o mazmorra.o
+	g++ ${debug} -o  ejecutable.exe main.o view.o controllerJuego.o controllerInicializador.o controllerCombate.o character.o heroe.o enemigo.o item.o pocion.o pocionVida.o pocionDefensa.o pocionDebilitadora.o pocionAtaque.o arma.o ataque.o ataqueComun.o ataqueDebilitador.o ataqueResistencia.o ataqueCuracion.o ataqueParalizador.o posicion.o mazmorra.o
 main: main.cpp
 	g++ -c ${debug} main.cpp
 view: ${VIEW}/view.cpp ${VIEW}/view.h
