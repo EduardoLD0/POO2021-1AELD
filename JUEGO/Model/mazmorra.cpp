@@ -173,9 +173,3 @@ int Mazmorra::getTamano()
 {
 	return this->tamano;
 }
-
-// mmmmmmmmm
-// <o>   <o>
-//     U
-//  _______
-//  este es charlie

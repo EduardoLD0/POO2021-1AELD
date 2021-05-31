@@ -32,8 +32,3 @@ tipoEnemigo Enemigo::getTipoEnemigo()
 {
 	return this->tipoE;
 }
-
-	/*\o/
-	   |
-	  / \
-	este es bob.*/
