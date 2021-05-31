@@ -13,12 +13,12 @@ Arma* ControllerInicializador::crearArma(std::string nombre, int resistencia, in
 
 Arma* ControllerInicializador::crearBaston()
 {
-	return crearArma("Baston", 10, 5);
+	return crearArma("Baston", 10, 3);
 }
 
 Arma* ControllerInicializador::crearEspada()
 {
-	return crearArma("Espada", 8, 7);
+	return crearArma("Espada", 8, 4);
 }
 
 Arma* ControllerInicializador::crearExcalibur()
@@ -26,9 +26,9 @@ Arma* ControllerInicializador::crearExcalibur()
 	return crearArma("Excalibur", 12, 9);
 }
 
-Enemigo* ControllerInicializador::crearEnemigo(std::string nombre, Arma arma, int vida, list<Ataque*>listaAtaques, int ataqueBase)
+Enemigo* ControllerInicializador::crearEnemigo(std::string nombre, Arma arma, int vida, list<Ataque*>listaAtaques, int ataqueBase, tipoEnemigo tipo)
 {
-	Enemigo* pEnemigo = new Enemigo(nombre, arma, vida, listaAtaques, ataqueBase);
+	Enemigo* pEnemigo = new Enemigo(nombre, arma, vida, listaAtaques, ataqueBase, tipo);
 	return pEnemigo;
 }
 
@@ -36,14 +36,14 @@ Enemigo* ControllerInicializador::crearGuerrero()
 {
 	Ataque* pAtaque1 = new AtaqueComun();
 	Ataque* pAtaque2 = new AtaqueResistencia();
-	return crearEnemigo("Guerrero", Arma("Espada", 10, 7), 5, {pAtaque1, pAtaque2}, 3);
+	return crearEnemigo("Guerrero", Arma("Espada", 8, 4), 10, {pAtaque1, pAtaque2}, 3, tipoEnemigo::guerrero);
 }
 
 Enemigo* ControllerInicializador::crearMago()
 {
 	Ataque* pAtaque1 = new AtaqueComun();
 	Ataque* pAtaque2 = new AtaqueCuracion();
-	return crearEnemigo("Mago", Arma("Baston", 8, 10), 5, {pAtaque1, pAtaque2}, 3);
+	return crearEnemigo("Mago", Arma("Baston", 10, 3), 8, {pAtaque1, pAtaque2}, 2, tipoEnemigo::mago);
 }
 
 Enemigo* ControllerInicializador::crearGuerreroBoss()
@@ -51,7 +51,7 @@ Enemigo* ControllerInicializador::crearGuerreroBoss()
 	Ataque* pAtaque1 = new AtaqueComun();
 	Ataque* pAtaque2 = new AtaqueParalizador();
 	Ataque* pAtaque3 = new AtaqueResistencia();
-	return crearEnemigo("Guerrero Boss", Arma("Espada Legendaria", 20, 10), 20, {pAtaque1, pAtaque2, pAtaque3}, 5);
+	return crearEnemigo("Guerrero Boss", Arma("Espada Legendaria", 20, 10), 20, {pAtaque1, pAtaque2, pAtaque3}, 5, tipoEnemigo::guerreroBoss);
 }
 
 Enemigo* ControllerInicializador::crearMagoBoss()
@@ -59,7 +59,7 @@ Enemigo* ControllerInicializador::crearMagoBoss()
 	Ataque* pAtaque1 = new AtaqueComun();
 	Ataque* pAtaque2 = new AtaqueCuracion();
 	Ataque* pAtaque3 = new AtaqueParalizador();
-	return crearEnemigo("Mago Boss", Arma("Baston de Gandalf", 25, 11), 5, {pAtaque1, pAtaque2, pAtaque3}, 2);
+	return crearEnemigo("Mago Boss", Arma("Baston de Gandalf", 25, 11), 18, {pAtaque1, pAtaque2, pAtaque3}, 2, tipoEnemigo::magoBoss);
 }
 
 Pocion* ControllerInicializador::crearPocion(tipoEfecto tipo)

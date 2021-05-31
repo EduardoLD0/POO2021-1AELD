@@ -44,7 +44,7 @@ void Character::setArma(Arma arma)
 	this->arma = arma;
 }
 
-void Character::agregarAtaque(Ataque* pAtaque)
+void Character::agregarAtaque(Ataque* pAtaque)	// Agrega el ataque a la lista de ataques
 {
 	listaAtaques.push_back(pAtaque);
 }

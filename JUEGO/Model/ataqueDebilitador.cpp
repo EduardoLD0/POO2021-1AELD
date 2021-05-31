@@ -6,7 +6,7 @@ AtaqueDebilitador::AtaqueDebilitador()
 	this->tipo = tipoAtaque::ataque;
 }
 
-int AtaqueDebilitador::aplicarEfecto()
+int AtaqueDebilitador::aplicarEfecto()	// Le baja los puntos de ataque base al enemigo
 {
 	return 2;
 }

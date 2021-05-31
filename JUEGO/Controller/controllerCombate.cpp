@@ -1,5 +1,10 @@
 #include "controllerCombate.h"
 
+ControllerCombate::ControllerCombate(ControllerJuego* controllerJ)
+{
+	this->controllerJ = controllerJ;
+}
+
 bool ControllerCombate::combatir(Heroe* hertz, Enemigo* enemigo)
 {
 	int opcion, turnosPerdidos = 0;
@@ -33,11 +38,10 @@ bool ControllerCombate::combatir(Heroe* hertz, Enemigo* enemigo)
 		}
 		else
 		{
-			pAtaque = enemigo->seleccionarAtaque(1);
+			pAtaque = enemigo->seleccionarAtaque();
 			cout << enemigo->getNombre() << " uso: " << pAtaque->getNombre() << endl;
 			atacar(enemigo, hertz, pAtaque);
 		}
-		cout << "x";
 		if (hertz->getArma()->getResistencia() < 1 && hertz->getArma()->getNombre() != "Sin arma")
 		{
 			hertz->eliminarArmaLista(hertz->getArma());
@@ -49,20 +53,23 @@ bool ControllerCombate::combatir(Heroe* hertz, Enemigo* enemigo)
 			turnosPerdidos = pAtaque->aplicarEfecto();
 		}
 	} while(hertz->getVida() > 0 && enemigo->getVida() > 0);
-	if(enemigo->getTipoEnemigo() == tipoEnemigo::guerreroBoss)
-	{
-		cout << "Tu recompensa es: 10 de vida";
-		hertz->setVida(hertz->getVida() + 10);
-	}
 	if(hertz->getVida() <= 0)
 	{
 		cout << "Haz muerto. Buen intento vaquero." << endl;
 		return 1;
 	}
-	else
+	cout << "Haz matado al enemigo!" << endl;
+	if(enemigo->getTipoEnemigo() == tipoEnemigo::guerreroBoss)
 	{
-		return 0;
+		cout << "Tu recompensa es: 10 de vida" << endl;
+		hertz->setVida(hertz->getVida() + 10);
 	}
+	else if(enemigo->getTipoEnemigo() == tipoEnemigo::magoBoss)
+	{
+		cout << "Tu recompensa es: 5 de ataque" << endl;
+		hertz->setAtaqueBase(hertz->getAtaqueBase() + 5);
+	}
+	return 0;
 }
 
 void ControllerCombate::atacar(Character* atacante, Character* atacado, Ataque* ataque)
@@ -78,8 +85,15 @@ void ControllerCombate::atacar(Character* atacante, Character* atacado, Ataque* 
 			cout << "Se ha curado " << ataque->aplicarEfecto() << "HP." << endl;
 			break;
 		case(tipoAtaque::ataque):
-			atacado->setAtaqueBase(atacado->getAtaqueBase() - ataque->aplicarEfecto());
-			cout << "Ha rebajado los puntos de ataque en " << ataque->aplicarEfecto() << "." << endl;
+			if(ataque->aplicarEfecto() > atacado->getAtaqueBase())
+			{
+				cout << "El ataque no puede bajar mas" << endl;
+			}
+			else
+			{
+				atacado->setAtaqueBase(atacado->getAtaqueBase() - ataque->aplicarEfecto());
+				cout << "Ha rebajado los puntos de ataque en " << ataque->aplicarEfecto() << "." << endl;
+			}
 			break;
 		case(tipoAtaque::resistencia):
 			atacado->getArma()->setResistencia(atacado->getArma()->getResistencia() - ataque->aplicarEfecto());
@@ -89,4 +103,5 @@ void ControllerCombate::atacar(Character* atacante, Character* atacado, Ataque* 
 			cout << "Lo ha paralizado en " << ataque->aplicarEfecto() << " turnos." << endl;
 			break;
 	}
+	controllerJ->actualizarItem();
 }

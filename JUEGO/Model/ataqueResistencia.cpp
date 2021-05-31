@@ -6,7 +6,7 @@ AtaqueResistencia::AtaqueResistencia()
 	this->tipo = tipoAtaque::resistencia;
 }
 
-int AtaqueResistencia::aplicarEfecto()
+int AtaqueResistencia::aplicarEfecto()	// Le baja la resistencia al arma del enemigo
 {
 	return 1;
 }

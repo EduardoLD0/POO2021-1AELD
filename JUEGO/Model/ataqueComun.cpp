@@ -6,7 +6,7 @@ AtaqueComun::AtaqueComun()
 	this->tipo = tipoAtaque::dano;
 }
 
-int AtaqueComun::aplicarEfecto()
+int AtaqueComun::aplicarEfecto()	// El ataque comun depende unicamente del ataque base y el arma
 {
-	return 3;
+	return 0;
 }

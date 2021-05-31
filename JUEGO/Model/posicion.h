@@ -21,13 +21,13 @@ class Posicion
 private:	
 	int x, y;
 	tipoElemento elemento;
-	int turnosSpawn;
+	int turnosSpawn; // Turnos para que desaparezca del mapa (aplica para pociones y armas)
 public:
 	Posicion();
 	Posicion(int, int, tipoElemento);
 	int getX();
 	int getY();
-	int getTurnosSpawn();
+	int getTurnosSpawn();	
 	tipoElemento getElemento();
 	void setElemento(tipoElemento);
 	void setTurnosSpawn(int);

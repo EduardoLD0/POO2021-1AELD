@@ -4,9 +4,9 @@ Mazmorra::Mazmorra(nivel nivelMazmorra)
 {
 	int x, y;
 	this->nivelMazmorra = nivelMazmorra;
-	if (nivelMazmorra == nivel::principiante)
+	if (nivelMazmorra == nivel::principiante)	// Dependiendo del nivel varia el tamaño y la cantidad de enemigos
 	{
-		this->cantidadEnemigos = 10;
+		this->cantidadEnemigos = 12;
 		tamano = 15;
 	}
 	else
@@ -14,7 +14,7 @@ Mazmorra::Mazmorra(nivel nivelMazmorra)
 		this->cantidadEnemigos = 35;
 		tamano = 25;
 	}
-	for(y = tamano - 1; y >= 0; --y)
+	for(y = tamano - 1; y >= 0; --y)			// Llena la matriz de posiciones vacias
 	{
 		for(x = 0; x < tamano; ++x)
 		{
@@ -39,50 +39,50 @@ Posicion * Mazmorra::encontrarPosicion(int x, int y)
 
 void Mazmorra::generarLaberinto()
 {
-	srand(time(NULL));
-	Posicion* obstaculo;
-	Posicion* obstaculoAnterior;
-	float densidad = 0.3;
-	int frecuenciaParedes = densidad * 8, aleatorioPuerta = rand() % ((tamano - 2) * 4);
+	srand(time(NULL));				// Inicializar semilla aleatoria
+	Posicion* obstaculo;			// Posicion en la que nos paramos
+	Posicion* obstaculoAnterior;	// Posicion anterior
+	float densidad = 0.3;			// Expresa que tan lleno de bloques esta el laberinto
+	int frecuenciaParedes = densidad * 8, aleatorioPuerta = rand() % ((tamano - 2) * 4);	// Genera una posicion aleatoria para la puerta
 	densidad = tamano * tamano * densidad / 4;
 	int x, y, i = 0, j;
 	for (list<Posicion*>::iterator it = matriz.begin(); it != matriz.end(); ++it)
 	{
-		if ((*it)->getX() == 0 || (*it)->getY() == 0 || (*it)->getX() == tamano - 1 || (*it)->getY() == tamano - 1)
+		if ((*it)->getX() == 0 || (*it)->getY() == 0 || (*it)->getX() == tamano - 1 || (*it)->getY() == tamano - 1) // Bordes del mapa
 		{
 			if(i == aleatorioPuerta && ((*it)->getX() != (*it)->getY()) && 
-				((*it)->getX() + (*it)->getY() != tamano - 1))
+				((*it)->getX() + (*it)->getY() != tamano - 1)) // La puerta no se puede generar en las esquinas, solo en los bordes
 			{
-				(*it)->setElemento(tipoElemento::puerta);
+				(*it)->setElemento(tipoElemento::puerta); // Genera una sola puerta aleatoriamente
 			}
 			else
 			{
-				(*it)->setElemento(tipoElemento::bloque);
+				(*it)->setElemento(tipoElemento::bloque);	// Llena los bordes de bloques
 			}
 			++i;
 		}
 		else
 		{
-			(*it)->setElemento(tipoElemento::vacio);
+			(*it)->setElemento(tipoElemento::vacio);	// El centro de la mazmorra esta vacio
 		}
 	}
 	for (i = 0; i <= densidad; ++i)
 	{
-		int x = rand() % (tamano - 4) + 2;
-		x = (x / 2) * 2; 
+		int x = rand() % (tamano - 4) + 2;	// Elige una posicion aleatoria
+		x = (x / 2) * 2; 					// Tiene que ser par la posicion
 		int y = rand() % (tamano - 4) + 2;
 		y = (y / 2) * 2;
 		encontrarPosicion(x, y)->setElemento(tipoElemento::bloque);
 		for (j = 0; j <= frecuenciaParedes; ++j)
 		{
-			int mx[4] = { x,  x,  x + 2, x - 2 };
+			int mx[4] = { x,  x,  x + 2, x - 2 }; // Cada posicion tiene 4 posiciones adyacentes
 			int my[4] = { y + 2,y - 2, y ,  y };
-			int r = rand() % 4;
+			int r = rand() % 4;					  // Elige una posicion adyacente al azar
 			obstaculo = encontrarPosicion(my[r], mx[r]);
 			obstaculoAnterior = encontrarPosicion(my[r] + (y - my[r]) / 2, mx[r] + (x - mx[r]) / 2);
 			if (obstaculo->getElemento() == tipoElemento::vacio)
 			{
-				obstaculo->setElemento(tipoElemento::bloque); 
+				obstaculo->setElemento(tipoElemento::bloque); // Si la posicion esta vacia, la llena y a la que esta atras tambien
 				obstaculoAnterior->setElemento(tipoElemento::bloque);
 			}
 		}
@@ -92,71 +92,27 @@ void Mazmorra::generarLaberinto()
 Posicion* Mazmorra::agregarEnemigo()
 {
 	srand(time(NULL));
-	int numEnemigos = 0, numAleatorio;
-	Posicion* pArriba, * pAbajo, * pIzq, * pDer;
+	int numAleatorio;	// Se generara un enemigo en una posicion aleatoria
+	Posicion* pArriba, * pAbajo, * pIzq, * pDer;	// Un enemigo no puede aparecer al lado de otro
 	do
 	{
-		for (list<Posicion*>::iterator it = matriz.begin(); it != matriz.end(); ++it)
+		for (list<Posicion*>::iterator it = matriz.begin(); it != matriz.end(); ++it)	// Se recorren todas las posiciones
 		{
 			numAleatorio = 1 + rand() % tamano;
-			pArriba = encontrarPosicion((*it)->getX(), (*it)->getY() + 1);
-			pAbajo = encontrarPosicion((*it)->getX(), (*it)->getY() - 1);
+			pArriba = encontrarPosicion((*it)->getX(), (*it)->getY() + 1);	// Si alguna de las coordenadas adyacentes tiene un enemigo
+			pAbajo = encontrarPosicion((*it)->getX(), (*it)->getY() - 1);	// se buscara otra posicion
 			pIzq = encontrarPosicion((*it)->getX() - 1, (*it)->getY());
 			pDer = encontrarPosicion((*it)->getX() + 1, (*it)->getY());
-			if ((*it)->getElemento() == tipoElemento::vacio && numAleatorio == 1 &&
+			if ((*it)->getElemento() == tipoElemento::vacio && numAleatorio == 1 &&		// Solo se pondra si el numero aleatorio coincide
 				pArriba->getElemento() != tipoElemento::enemigo && pAbajo->getElemento() != tipoElemento::enemigo &&
 				pIzq->getElemento() != tipoElemento::enemigo && pDer->getElemento() != tipoElemento::enemigo)
 			{
 				(*it)->setElemento(tipoElemento::enemigo);
-				++numEnemigos;
-				return *it;
+				return *it;	// Retorna la posicion en la que se ubico el enemigo
 				break;
 			}
 		}
-	} while(1);
-}
-
-void Mazmorra::pintar()
-{
-	char a;
-	int i = 0;
-	for (list<Posicion*>::iterator it = matriz.begin(); it != matriz.end(); ++it)
-	{
-		++i;
-		switch((*it)->getElemento())
-		{
-		case(tipoElemento::vacio):
-			a = ' ';
-			break;
-		case(tipoElemento::bloque):
-			a = 178;
-			break;
-		case(tipoElemento::heroe):
-			a = 211;
-			break;
-		case(tipoElemento::enemigo):
-			a = 184;
-			break;
-		case(tipoElemento::pocion):
-			a = 169;
-			break;
-		case(tipoElemento::arma):
-			a = 158;
-			break;
-		case(tipoElemento::puerta):
-			a = 206;
-			break;
-		case(tipoElemento::artefacto):
-			a = 199;
-			break;
-		}
-		cout << a << a;
-		if(i == tamano)
-		{
-			cout << endl;
-			i = 0;
-		}
-	}
+	} while(1);	// Nos aseguramos de que el enemigo se ponga
 }
 
 Posicion* Mazmorra::agregarArma()
@@ -169,13 +125,13 @@ Posicion* Mazmorra::agregarArma()
 		x = rand() % tamano;
 		y = rand() % tamano;
 		pPosicion = encontrarPosicion(x, y);
-	} while (pPosicion->getElemento() != tipoElemento::vacio);
-	pPosicion->setElemento(tipoElemento::arma);
-	pPosicion->setTurnosSpawn(3);
-	return pPosicion;
+	} while (pPosicion->getElemento() != tipoElemento::vacio);	// Se busca una posicion al azar que este vacia
+	pPosicion->setElemento(tipoElemento::arma);	// Se pone el arma
+	pPosicion->setTurnosSpawn(3);		// Se ajustan los turnos para que desaparezca
+	return pPosicion;	// Retorna la posicion
 }
 
-Posicion* Mazmorra::agregarPocion()
+Posicion* Mazmorra::agregarPocion()	// Misma estrategia que con las armas
 {
 	srand(time(NULL));
 	Posicion * pPosicion;
@@ -191,7 +147,7 @@ Posicion* Mazmorra::agregarPocion()
 	return pPosicion;
 }
 
-Posicion * Mazmorra::agregarObjeto(tipoElemento elemento)
+Posicion * Mazmorra::agregarObjeto(tipoElemento elemento)	// Agrega un objeto especifico de forma aleatoria
 {
 	srand(time(NULL));
 	Posicion* pPosicion;
@@ -208,7 +164,18 @@ int Mazmorra::getCantidadEnemigos()
 	return this->cantidadEnemigos;
 }
 
+list<Posicion*> Mazmorra::getMatriz()
+{
+	return this->matriz;
+}
+
+int Mazmorra::getTamano()
+{
+	return this->tamano;
+}
+
 // mmmmmmmmm
 // <o>   <o>
 //     U
 //  _______
+//  este es charlie

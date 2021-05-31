@@ -6,7 +6,7 @@ PocionDebilitadora::PocionDebilitadora()
 	this->tipo = tipoEfecto::dano;
 }
 
-int PocionDebilitadora::aplicarEfecto()
+int PocionDebilitadora::aplicarEfecto()	// El efecto se aplica sobre el enemigo, no sobre el jugador
 {
-	return 4;
+	return 0;
 }

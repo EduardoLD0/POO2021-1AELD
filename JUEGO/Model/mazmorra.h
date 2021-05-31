@@ -24,18 +24,18 @@ class Mazmorra
 {
 private:
 	int tamano, cantidadEnemigos;
-	bool artefactoEncontrado;
-	list<Posicion*> matriz;
+	list<Posicion*> matriz;	// Mapa del laberinto
 	nivel nivelMazmorra;
 public:
 	Mazmorra(nivel);
-	Posicion * encontrarPosicion(int, int);
-	void generarLaberinto();
-	Posicion* agregarEnemigo();
-	Posicion* agregarPocion();
-	Posicion* agregarArma();
-	void pintar();
-	Posicion * agregarObjeto(tipoElemento);
+	Posicion * encontrarPosicion(int, int);	// Encuentra la posicion con las coordenadas X y Y
+	void generarLaberinto();				// Genera el laberinto de forma aleatoria
+	Posicion* agregarEnemigo();				// Elige una posicion al azar y pone un enemigo
+	Posicion* agregarPocion();				// "" pocion
+	Posicion* agregarArma();				// "" arma
+	Posicion * agregarObjeto(tipoElemento);	
 	int getCantidadEnemigos();
+	list<Posicion*> getMatriz();
+	int getTamano();
 };
 #endif

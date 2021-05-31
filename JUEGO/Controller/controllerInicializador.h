@@ -28,7 +28,7 @@ public:
 	Enemigo* crearMago();
 	Enemigo* crearGuerreroBoss();
 	Enemigo* crearMagoBoss();
-	Enemigo* crearEnemigo(std::string, Arma, int, list<Ataque*>, int);	
+	Enemigo* crearEnemigo(std::string, Arma, int, list<Ataque*>, int, tipoEnemigo);	
 	Pocion* crearPocion(tipoEfecto);
 	Ataque* crearAtaque(tipoAtaque);
 	Mazmorra* crearMazmorra(nivel);

@@ -12,7 +12,7 @@ class View
         ControllerCombate* controllerC;
     public:
         void pantallaPrincipal();
-        void inventario();
+        bool inventario();
         void juego(int);
         void entrada(char);
         void evento(int);

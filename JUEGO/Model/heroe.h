@@ -20,7 +20,7 @@ public:
 	void seleccionarArma(int);
 	void recogerPocion(Pocion*);
 	void recogerArma(Arma*);
-	int revisarItem(tipoItem);
+	int revisarItem(tipoItem);	// Retorna el tamaño de la lista de pociones o armas
 	void eliminarArmaLista(Arma*);
 	Ataque* seleccionarAtaque(int);
 	void mostrarListaPociones();

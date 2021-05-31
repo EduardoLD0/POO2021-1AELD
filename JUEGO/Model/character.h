@@ -16,11 +16,11 @@ protected:
 	std::string nombre;
 	int vida;	
 	int ataqueBase;
-	Posicion* posicion;
+	Posicion* posicion;	// Donde se encuentra el personaje en el mapa
 	Arma arma;
 	list<Ataque*> listaAtaques;
 public:
-	Character();
+	Character();	// Clase abstracta
 	void setVida(int);
 	int getVida();
 	void setAtaqueBase(int);

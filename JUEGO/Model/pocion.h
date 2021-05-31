@@ -12,14 +12,14 @@ enum tipoEfecto
 	resistencia = 4
 };
 
-class Pocion : public Item
+class Pocion : public Item	// Clase abstracta
 {
 protected:
 	std::string nombre;
 	tipoEfecto tipo;
 public:
 	tipoEfecto getTipoEfecto();
-	virtual int aplicarEfecto() = 0;
+	virtual int aplicarEfecto() = 0;	// En las clases hijas se hace sobreescritura
 	std::string getNombre();
 };
 

@@ -12,13 +12,13 @@ enum class tipoAtaque
 	ataque = 5
 };
 
-class Ataque
+class Ataque	// Clase abstracta
 {
 protected:
 	std::string nombre;
 	tipoAtaque tipo;
 public:
-	virtual int aplicarEfecto() = 0;
+	virtual int aplicarEfecto() = 0;	// Retorna la cantidad de daño o efecto que hace el ataque
 	std::string getNombre();
 	tipoAtaque getTipoAtaque();
 };

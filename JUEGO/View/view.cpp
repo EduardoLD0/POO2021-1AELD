@@ -26,9 +26,10 @@ void View::pantallaPrincipal()
     } while(opcion != 0);
 }
 
-void View::inventario()
+bool View::inventario()
 {
     int opcion;
+    bool salida = 0;
     Heroe* pHeroe = controllerJ->getHeroe();
     try
     {
@@ -46,7 +47,8 @@ void View::inventario()
             cout << "Escoja una pocion:" << endl;
             pHeroe->mostrarListaPociones();
             cin >> opcion;
-            pHeroe->usarPocion(opcion);
+            salida = pHeroe->usarPocion(opcion);
+            controllerJ->actualizarItem();
             break;
         case 2:
         if(pHeroe->getArma()->getNombre() != "Sin arma")
@@ -61,6 +63,7 @@ void View::inventario()
             pHeroe->mostrarListaArmas();
             cin >> opcion;
             pHeroe->seleccionarArma(opcion);
+            controllerJ->actualizarItem();
             break;
         }
     }
@@ -68,14 +71,12 @@ void View::inventario()
     {
         cout << e.what() << '\n';
     }
-    
-    
-    
+    return salida;
 }
 
 void View::evento(int evento)
 {
-    int opcion;
+    int opcion, arrojarPocion = 0;
     Heroe * pHeroe = controllerJ->getHeroe();
     Enemigo * pEnemigo = new Enemigo();
     Pocion * pPocion = new PocionVida();
@@ -94,7 +95,7 @@ void View::evento(int evento)
             case 0:
                 break;
             case 1:
-                inventario();
+                arrojarPocion = inventario();
                 break;
             case 2:
                 break;
@@ -103,6 +104,10 @@ void View::evento(int evento)
             }
         } while(opcion < 1 || opcion > 2);
         *pEnemigo = controllerJ->getEnemigo(controllerJ->getPosHeroe());
+        if(arrojarPocion)
+        {
+            pEnemigo->setVida(pEnemigo->getVida() - 5);
+        }
         controllerJ->setGameOver(controllerC->combatir(pHeroe, pEnemigo));
         controllerJ->setContadorCombate(controllerJ->getContadorCombate() + 1);
         if(controllerJ->getContadorCombate() % 3 == 0)
@@ -118,20 +123,22 @@ void View::evento(int evento)
         try
         {
             pHeroe->recogerPocion(controllerJ->getPocion(controllerJ->getPosHeroe()));
+            controllerJ->actualizarItem();
         }
         catch(const std::domain_error& e)
         {
-            std::cerr << e.what() << '\n';
+            cout << e.what() << '\n';
         }
         break;
     case 3:
     try
         {
             pHeroe->recogerArma(controllerJ->getArma(controllerJ->getPosHeroe()));
+            controllerJ->actualizarItem();
         }
         catch(const std::domain_error& e)
         {
-            std::cerr << e.what() << '\n';
+            cout << e.what() << '\n';
         }
         break;
     case 4:
@@ -181,7 +188,6 @@ void View::entrada(char letra)
 
 void View::juego(int dificultad)
 {
-    controllerC = new ControllerCombate();
     switch(dificultad)
     {
     case 1:
@@ -191,6 +197,7 @@ void View::juego(int dificultad)
         controllerJ = new ControllerJuego(nivel::normal);
         break;
     }
+    controllerC = new ControllerCombate(controllerJ);
     char letra;
     do
     {

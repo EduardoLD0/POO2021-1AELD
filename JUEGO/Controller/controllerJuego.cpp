@@ -36,6 +36,7 @@ ControllerJuego::ControllerJuego(nivel nivelMazmorra)
 	{
 		generarBoss();
 	}
+	this->contadorCombate = 0;
 }
 
 void ControllerJuego::generarPocion()
@@ -68,7 +69,7 @@ void ControllerJuego::generarEnemigo()
 	{
 		aleatorio = rand() % listaEnemigos.size();
 		it = std::next(listaEnemigos.begin(), aleatorio);
-	} while((*it)->getTipoEnemigo() == tipoEnemigo::guerrero || (*it)->getTipoEnemigo() == tipoEnemigo::mago);
+	} while((*it)->getTipoEnemigo() != tipoEnemigo::guerrero && (*it)->getTipoEnemigo() != tipoEnemigo::mago);
 	listaEnemigosSuelo.insert(pair<Posicion*, Enemigo>(pPosicion, **it));
 }
 
@@ -82,7 +83,7 @@ void ControllerJuego::generarBoss()
 	{
 		aleatorio = rand() % listaEnemigos.size();
 		it = std::next(listaEnemigos.begin(), aleatorio);
-	} while((*it)->getTipoEnemigo() == tipoEnemigo::guerreroBoss || (*it)->getTipoEnemigo() == tipoEnemigo::magoBoss);
+	} while((*it)->getTipoEnemigo() != tipoEnemigo::guerreroBoss && (*it)->getTipoEnemigo() != tipoEnemigo::magoBoss);
 	listaEnemigosSuelo.insert(pair<Posicion*, Enemigo>(pPosicion, **it));
 }
 
@@ -93,7 +94,7 @@ void ControllerJuego::actualizarItem()
 	for (map<Posicion*, Pocion*>::iterator it = listaPocionesSuelo.begin(); it != listaPocionesSuelo.end(); )
 	{
 		pPosicion = it->first;
-		if (pPosicion->getTurnosSpawn() == 0)
+		if (pPosicion->getTurnosSpawn() == 1)
 		{
 			pPosicion->setElemento(tipoElemento::vacio);
 			it = listaPocionesSuelo.erase(it);
@@ -169,7 +170,7 @@ int ControllerJuego::moverPersonaje(direccion dir)
 				{
 					heroe->getPosicion()->setElemento(tipoElemento::vacio);
 					heroe->setPosicion(pPosicion);
-					salida = 3;
+					salida = 2;
 				}
 			}
 			else
@@ -264,7 +265,63 @@ Posicion* ControllerJuego::getPosHeroe()
 
 void ControllerJuego::mostrarMazmorra()
 {
-	this->mazmorra->pintar();
+	char a;
+	list<Posicion*> matriz = mazmorra->getMatriz();
+	Enemigo* pEnemigo = new Enemigo();
+	int tamano = mazmorra->getTamano();
+	int i = 0;
+	for (list<Posicion*>::iterator it = matriz.begin(); it != matriz.end(); ++it)
+	{
+		++i;
+		switch((*it)->getElemento())
+		{
+		case(tipoElemento::vacio):
+			a = ' ';
+			break;
+		case(tipoElemento::bloque):
+			a = 178;
+			break;
+		case(tipoElemento::heroe):
+			a = 211;
+			break;
+		case(tipoElemento::enemigo):
+			*pEnemigo = getEnemigo(*it);
+			switch(pEnemigo->getTipoEnemigo())
+			{
+			case(tipoEnemigo::guerrero):
+				a = 251;
+				break;
+			case(tipoEnemigo::mago):
+				a = 253;
+				break;
+			case(tipoEnemigo::guerreroBoss):
+				a = 190;
+				break;
+			case(tipoEnemigo::magoBoss):
+				a = 245;
+				break;
+			}
+			break;
+		case(tipoElemento::pocion):
+			a = 169;
+			break;
+		case(tipoElemento::arma):
+			a = 158;
+			break;
+		case(tipoElemento::puerta):
+			a = 206;
+			break;
+		case(tipoElemento::artefacto):
+			a = 199;
+			break;
+		}
+		cout << a << a;
+		if(i == tamano)
+		{
+			cout << endl;
+			i = 0;
+		}
+	}
 }
 
 void ControllerJuego::setGameOver(bool estado)
