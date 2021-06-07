@@ -1,0 +1,2 @@
+{ "Warning" "WQCU_PARALLEL_NO_LICENSE" "" "Parallel compilation is not licensed and has been disabled" {  } {  } 0 20028 "Parallel compilation is not licensed and has been disabled" 0 0 "Fitter" 0 -1 1623094625952 ""}
+{ "Info" "IMPP_MPP_AUTO_ASSIGNED_DEVICE" "gimnasio EP2C5T144C6 " "Automatically selected device EP2C5T144C6 for design gimnasio" {  } {  } 0 119004 "Automatically selected device %2!s! for design %1!s!" 0 0 "Fitter" 0 -1 1623094626060 ""}

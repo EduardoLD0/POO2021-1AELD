@@ -1,0 +1,33 @@
+|gimnasio
+A <= bcd7seg:inst.A
+W => bcd7seg:inst.W
+X => bcd7seg:inst.X
+Y => bcd7seg:inst.Y
+Z => bcd7seg:inst.Z
+EN => bcd7seg:inst.EN
+B <= bcd7seg:inst.B
+C <= bcd7seg:inst.C
+D <= bcd7seg:inst.D
+E <= bcd7seg:inst.E
+F <= bcd7seg:inst.F
+G <= bcd7seg:inst.G
+
+
+|gimnasio|bcd7seg:inst
+A <= inst.DB_MAX_OUTPUT_PORT_TYPE
+X => inst69.IN0
+EN => inst69.IN1
+EN => inst71.IN1
+EN => inst68.IN1
+EN => inst70.IN1
+Z => inst71.IN0
+W => inst68.IN0
+Y => inst70.IN0
+B <= inst15.DB_MAX_OUTPUT_PORT_TYPE
+C <= inst27.DB_MAX_OUTPUT_PORT_TYPE
+D <= inst32.DB_MAX_OUTPUT_PORT_TYPE
+E <= inst43.DB_MAX_OUTPUT_PORT_TYPE
+F <= inst49.DB_MAX_OUTPUT_PORT_TYPE
+G <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+
+
