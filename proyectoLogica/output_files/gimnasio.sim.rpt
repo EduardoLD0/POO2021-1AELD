@@ -1,5 +1,5 @@
 Simulator report for gimnasio
-Tue Jun 08 17:27:36 2021
+Sat Jun 12 12:58:54 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -45,9 +45,9 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 us       ;
-; Simulation Netlist Size     ; 33 nodes     ;
-; Simulation Coverage         ;     100.00 % ;
-; Total Number of Transitions ; 324          ;
+; Simulation Netlist Size     ; 192 nodes    ;
+; Simulation Coverage         ;      73.96 % ;
+; Total Number of Transitions ; 10733        ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 +-----------------------------+--------------+
@@ -94,72 +94,281 @@ Please use Quartus II 64-Bit to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;     100.00 % ;
-; Total nodes checked                                 ; 33           ;
-; Total output ports checked                          ; 33           ;
-; Total output ports with complete 1/0-value coverage ; 33           ;
-; Total output ports with no 1/0-value coverage       ; 0            ;
-; Total output ports with no 1-value coverage         ; 0            ;
-; Total output ports with no 0-value coverage         ; 0            ;
+; Total coverage as a percentage                      ;      73.96 % ;
+; Total nodes checked                                 ; 192          ;
+; Total output ports checked                          ; 192          ;
+; Total output ports with complete 1/0-value coverage ; 142          ;
+; Total output ports with no 1/0-value coverage       ; 48           ;
+; Total output ports with no 1-value coverage         ; 48           ;
+; Total output ports with no 0-value coverage         ; 50           ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+--------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                          ;
-+---------------------------------+---------------------------------+------------------+
-; Node Name                       ; Output Port Name                ; Output Port Type ;
-+---------------------------------+---------------------------------+------------------+
-; |gimnasio|s4                    ; |gimnasio|s4                    ; pin_out          ;
-; |gimnasio|clock                 ; |gimnasio|clock                 ; out              ;
-; |gimnasio|clear                 ; |gimnasio|clear                 ; out              ;
-; |gimnasio|s3                    ; |gimnasio|s3                    ; pin_out          ;
-; |gimnasio|s2                    ; |gimnasio|s2                    ; pin_out          ;
-; |gimnasio|s1                    ; |gimnasio|s1                    ; pin_out          ;
-; |gimnasio|s0                    ; |gimnasio|s0                    ; pin_out          ;
-; |gimnasio|s5                    ; |gimnasio|s5                    ; pin_out          ;
-; |gimnasio|counter:inst|inst     ; |gimnasio|counter:inst|inst     ; regout           ;
-; |gimnasio|counter:inst|inst1    ; |gimnasio|counter:inst|inst1    ; regout           ;
-; |gimnasio|counter:inst|inst1~0  ; |gimnasio|counter:inst|inst1~0  ; out0             ;
-; |gimnasio|counter:inst|inst1~1  ; |gimnasio|counter:inst|inst1~1  ; out0             ;
-; |gimnasio|counter:inst|inst1~2  ; |gimnasio|counter:inst|inst1~2  ; out0             ;
-; |gimnasio|counter:inst|inst2    ; |gimnasio|counter:inst|inst2    ; regout           ;
-; |gimnasio|counter:inst|inst2~0  ; |gimnasio|counter:inst|inst2~0  ; out0             ;
-; |gimnasio|counter:inst|inst2~1  ; |gimnasio|counter:inst|inst2~1  ; out0             ;
-; |gimnasio|counter:inst|inst2~2  ; |gimnasio|counter:inst|inst2~2  ; out0             ;
-; |gimnasio|counter:inst|inst7    ; |gimnasio|counter:inst|inst7    ; out0             ;
-; |gimnasio|counter:inst|inst3    ; |gimnasio|counter:inst|inst3    ; regout           ;
-; |gimnasio|counter:inst|inst3~0  ; |gimnasio|counter:inst|inst3~0  ; out0             ;
-; |gimnasio|counter:inst|inst3~1  ; |gimnasio|counter:inst|inst3~1  ; out0             ;
-; |gimnasio|counter:inst|inst3~2  ; |gimnasio|counter:inst|inst3~2  ; out0             ;
-; |gimnasio|counter:inst|inst8    ; |gimnasio|counter:inst|inst8    ; out0             ;
-; |gimnasio|counter:inst|innst8   ; |gimnasio|counter:inst|innst8   ; regout           ;
-; |gimnasio|counter:inst|innst8~0 ; |gimnasio|counter:inst|innst8~0 ; out0             ;
-; |gimnasio|counter:inst|innst8~1 ; |gimnasio|counter:inst|innst8~1 ; out0             ;
-; |gimnasio|counter:inst|innst8~2 ; |gimnasio|counter:inst|innst8~2 ; out0             ;
-; |gimnasio|counter:inst|inst10   ; |gimnasio|counter:inst|inst10   ; out0             ;
-; |gimnasio|counter:inst|innst9   ; |gimnasio|counter:inst|innst9   ; regout           ;
-; |gimnasio|counter:inst|innst9~0 ; |gimnasio|counter:inst|innst9~0 ; out0             ;
-; |gimnasio|counter:inst|innst9~1 ; |gimnasio|counter:inst|innst9~1 ; out0             ;
-; |gimnasio|counter:inst|innst9~2 ; |gimnasio|counter:inst|innst9~2 ; out0             ;
-; |gimnasio|counter:inst|inst12   ; |gimnasio|counter:inst|inst12   ; out0             ;
-+---------------------------------+---------------------------------+------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                    ;
++----------------------------------------------+----------------------------------------------+------------------+
+; Node Name                                    ; Output Port Name                             ; Output Port Type ;
++----------------------------------------------+----------------------------------------------+------------------+
+; |gimnasio|W0                                 ; |gimnasio|W0                                 ; pin_out          ;
+; |gimnasio|B                                  ; |gimnasio|B                                  ; out              ;
+; |gimnasio|inst7                              ; |gimnasio|inst7                              ; out0             ;
+; |gimnasio|clock                              ; |gimnasio|clock                              ; out              ;
+; |gimnasio|W1                                 ; |gimnasio|W1                                 ; pin_out          ;
+; |gimnasio|W2                                 ; |gimnasio|W2                                 ; pin_out          ;
+; |gimnasio|W3                                 ; |gimnasio|W3                                 ; pin_out          ;
+; |gimnasio|Z0                                 ; |gimnasio|Z0                                 ; pin_out          ;
+; |gimnasio|Y0                                 ; |gimnasio|Y0                                 ; pin_out          ;
+; |gimnasio|X0                                 ; |gimnasio|X0                                 ; pin_out          ;
+; |gimnasio|Z1                                 ; |gimnasio|Z1                                 ; pin_out          ;
+; |gimnasio|Z2                                 ; |gimnasio|Z2                                 ; pin_out          ;
+; |gimnasio|Z3                                 ; |gimnasio|Z3                                 ; pin_out          ;
+; |gimnasio|Y1                                 ; |gimnasio|Y1                                 ; pin_out          ;
+; |gimnasio|Y2                                 ; |gimnasio|Y2                                 ; pin_out          ;
+; |gimnasio|Y3                                 ; |gimnasio|Y3                                 ; pin_out          ;
+; |gimnasio|X1                                 ; |gimnasio|X1                                 ; pin_out          ;
+; |gimnasio|X2                                 ; |gimnasio|X2                                 ; pin_out          ;
+; |gimnasio|X3                                 ; |gimnasio|X3                                 ; pin_out          ;
+; |gimnasio|P                                  ; |gimnasio|P                                  ; pin_out          ;
+; |gimnasio|D1                                 ; |gimnasio|D1                                 ; pin_out          ;
+; |gimnasio|D0                                 ; |gimnasio|D0                                 ; pin_out          ;
+; |gimnasio|s0                                 ; |gimnasio|s0                                 ; pin_out          ;
+; |gimnasio|s1                                 ; |gimnasio|s1                                 ; pin_out          ;
+; |gimnasio|s2                                 ; |gimnasio|s2                                 ; pin_out          ;
+; |gimnasio|s3                                 ; |gimnasio|s3                                 ; pin_out          ;
+; |gimnasio|s4                                 ; |gimnasio|s4                                 ; pin_out          ;
+; |gimnasio|s5                                 ; |gimnasio|s5                                 ; pin_out          ;
+; |gimnasio|C                                  ; |gimnasio|C                                  ; pin_out          ;
+; |gimnasio|counter:inst3|inst                 ; |gimnasio|counter:inst3|inst                 ; regout           ;
+; |gimnasio|counter:inst3|inst1                ; |gimnasio|counter:inst3|inst1                ; regout           ;
+; |gimnasio|counter:inst3|inst1~0              ; |gimnasio|counter:inst3|inst1~0              ; out0             ;
+; |gimnasio|counter:inst3|inst1~1              ; |gimnasio|counter:inst3|inst1~1              ; out0             ;
+; |gimnasio|counter:inst3|inst1~2              ; |gimnasio|counter:inst3|inst1~2              ; out0             ;
+; |gimnasio|counter:inst3|inst2                ; |gimnasio|counter:inst3|inst2                ; regout           ;
+; |gimnasio|counter:inst3|inst2~0              ; |gimnasio|counter:inst3|inst2~0              ; out0             ;
+; |gimnasio|counter:inst3|inst2~1              ; |gimnasio|counter:inst3|inst2~1              ; out0             ;
+; |gimnasio|counter:inst3|inst2~2              ; |gimnasio|counter:inst3|inst2~2              ; out0             ;
+; |gimnasio|counter:inst3|inst7                ; |gimnasio|counter:inst3|inst7                ; out0             ;
+; |gimnasio|counter:inst3|inst3                ; |gimnasio|counter:inst3|inst3                ; regout           ;
+; |gimnasio|counter:inst3|inst3~0              ; |gimnasio|counter:inst3|inst3~0              ; out0             ;
+; |gimnasio|counter:inst3|inst3~1              ; |gimnasio|counter:inst3|inst3~1              ; out0             ;
+; |gimnasio|counter:inst3|inst3~2              ; |gimnasio|counter:inst3|inst3~2              ; out0             ;
+; |gimnasio|counter:inst3|inst8                ; |gimnasio|counter:inst3|inst8                ; out0             ;
+; |gimnasio|counter:inst3|innst8               ; |gimnasio|counter:inst3|innst8               ; regout           ;
+; |gimnasio|counter:inst3|innst8~0             ; |gimnasio|counter:inst3|innst8~0             ; out0             ;
+; |gimnasio|counter:inst3|innst8~1             ; |gimnasio|counter:inst3|innst8~1             ; out0             ;
+; |gimnasio|counter:inst3|innst8~2             ; |gimnasio|counter:inst3|innst8~2             ; out0             ;
+; |gimnasio|counter:inst3|inst10               ; |gimnasio|counter:inst3|inst10               ; out0             ;
+; |gimnasio|counter:inst3|innst9               ; |gimnasio|counter:inst3|innst9               ; regout           ;
+; |gimnasio|counter:inst3|innst9~0             ; |gimnasio|counter:inst3|innst9~0             ; out0             ;
+; |gimnasio|counter:inst3|innst9~1             ; |gimnasio|counter:inst3|innst9~1             ; out0             ;
+; |gimnasio|counter:inst3|innst9~2             ; |gimnasio|counter:inst3|innst9~2             ; out0             ;
+; |gimnasio|counter:inst3|inst12               ; |gimnasio|counter:inst3|inst12               ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst32         ; |gimnasio|MaquinaEstados:inst|inst32         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst           ; |gimnasio|MaquinaEstados:inst|inst           ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst20         ; |gimnasio|MaquinaEstados:inst|inst20         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst39         ; |gimnasio|MaquinaEstados:inst|inst39         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|D1             ; |gimnasio|MaquinaEstados:inst|D1             ; regout           ;
+; |gimnasio|MaquinaEstados:inst|inst8          ; |gimnasio|MaquinaEstados:inst|inst8          ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst9          ; |gimnasio|MaquinaEstados:inst|inst9          ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst11         ; |gimnasio|MaquinaEstados:inst|inst11         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|D0             ; |gimnasio|MaquinaEstados:inst|D0             ; regout           ;
+; |gimnasio|MaquinaEstados:inst|inst22         ; |gimnasio|MaquinaEstados:inst|inst22         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst23         ; |gimnasio|MaquinaEstados:inst|inst23         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst18         ; |gimnasio|MaquinaEstados:inst|inst18         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst28         ; |gimnasio|MaquinaEstados:inst|inst28         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst15         ; |gimnasio|MaquinaEstados:inst|inst15         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst43         ; |gimnasio|MaquinaEstados:inst|inst43         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst44         ; |gimnasio|MaquinaEstados:inst|inst44         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst45         ; |gimnasio|MaquinaEstados:inst|inst45         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst55         ; |gimnasio|MaquinaEstados:inst|inst55         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst56         ; |gimnasio|MaquinaEstados:inst|inst56         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst57         ; |gimnasio|MaquinaEstados:inst|inst57         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst63         ; |gimnasio|MaquinaEstados:inst|inst63         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst62         ; |gimnasio|MaquinaEstados:inst|inst62         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst86         ; |gimnasio|MaquinaEstados:inst|inst86         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst87         ; |gimnasio|MaquinaEstados:inst|inst87         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst89         ; |gimnasio|MaquinaEstados:inst|inst89         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst88         ; |gimnasio|MaquinaEstados:inst|inst88         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst90         ; |gimnasio|MaquinaEstados:inst|inst90         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst2          ; |gimnasio|MaquinaEstados:inst|inst2          ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst7          ; |gimnasio|MaquinaEstados:inst|inst7          ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst145        ; |gimnasio|MaquinaEstados:inst|inst145        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst146        ; |gimnasio|MaquinaEstados:inst|inst146        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst155        ; |gimnasio|MaquinaEstados:inst|inst155        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst147        ; |gimnasio|MaquinaEstados:inst|inst147        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst158        ; |gimnasio|MaquinaEstados:inst|inst158        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst157        ; |gimnasio|MaquinaEstados:inst|inst157        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst159        ; |gimnasio|MaquinaEstados:inst|inst159        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst151        ; |gimnasio|MaquinaEstados:inst|inst151        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst162        ; |gimnasio|MaquinaEstados:inst|inst162        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst153        ; |gimnasio|MaquinaEstados:inst|inst153        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst165        ; |gimnasio|MaquinaEstados:inst|inst165        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst173        ; |gimnasio|MaquinaEstados:inst|inst173        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst168        ; |gimnasio|MaquinaEstados:inst|inst168        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst177        ; |gimnasio|MaquinaEstados:inst|inst177        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst169        ; |gimnasio|MaquinaEstados:inst|inst169        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst178        ; |gimnasio|MaquinaEstados:inst|inst178        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst180        ; |gimnasio|MaquinaEstados:inst|inst180        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst171        ; |gimnasio|MaquinaEstados:inst|inst171        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst182        ; |gimnasio|MaquinaEstados:inst|inst182        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst183        ; |gimnasio|MaquinaEstados:inst|inst183        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst184        ; |gimnasio|MaquinaEstados:inst|inst184        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst193        ; |gimnasio|MaquinaEstados:inst|inst193        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst194        ; |gimnasio|MaquinaEstados:inst|inst194        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst197        ; |gimnasio|MaquinaEstados:inst|inst197        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst202        ; |gimnasio|MaquinaEstados:inst|inst202        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst208        ; |gimnasio|MaquinaEstados:inst|inst208        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst204        ; |gimnasio|MaquinaEstados:inst|inst204        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst205        ; |gimnasio|MaquinaEstados:inst|inst205        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst212        ; |gimnasio|MaquinaEstados:inst|inst212        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst211        ; |gimnasio|MaquinaEstados:inst|inst211        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst219        ; |gimnasio|MaquinaEstados:inst|inst219        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst221        ; |gimnasio|MaquinaEstados:inst|inst221        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst224        ; |gimnasio|MaquinaEstados:inst|inst224        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst238        ; |gimnasio|MaquinaEstados:inst|inst238        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst225        ; |gimnasio|MaquinaEstados:inst|inst225        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst239        ; |gimnasio|MaquinaEstados:inst|inst239        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst240        ; |gimnasio|MaquinaEstados:inst|inst240        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst241        ; |gimnasio|MaquinaEstados:inst|inst241        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst243        ; |gimnasio|MaquinaEstados:inst|inst243        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst33         ; |gimnasio|MaquinaEstados:inst|inst33         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst46         ; |gimnasio|MaquinaEstados:inst|inst46         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst58         ; |gimnasio|MaquinaEstados:inst|inst58         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst59         ; |gimnasio|MaquinaEstados:inst|inst59         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst84         ; |gimnasio|MaquinaEstados:inst|inst84         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst96         ; |gimnasio|MaquinaEstados:inst|inst96         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst95         ; |gimnasio|MaquinaEstados:inst|inst95         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst85         ; |gimnasio|MaquinaEstados:inst|inst85         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst97         ; |gimnasio|MaquinaEstados:inst|inst97         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst83         ; |gimnasio|MaquinaEstados:inst|inst83         ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst131        ; |gimnasio|MaquinaEstados:inst|inst131        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst1          ; |gimnasio|MaquinaEstados:inst|inst1          ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst3          ; |gimnasio|MaquinaEstados:inst|inst3          ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst200        ; |gimnasio|MaquinaEstados:inst|inst200        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst203        ; |gimnasio|MaquinaEstados:inst|inst203        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst223        ; |gimnasio|MaquinaEstados:inst|inst223        ; out0             ;
+; |gimnasio|MaquinaEstados:inst|xnor3:inst52|1 ; |gimnasio|MaquinaEstados:inst|xnor3:inst52|1 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|xnor3:inst52|3 ; |gimnasio|MaquinaEstados:inst|xnor3:inst52|3 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|xnor3:inst50|1 ; |gimnasio|MaquinaEstados:inst|xnor3:inst50|1 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|xnor3:inst50|3 ; |gimnasio|MaquinaEstados:inst|xnor3:inst50|3 ; out0             ;
++----------------------------------------------+----------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+-------------------------------------------------+
-; Missing 1-Value Coverage                        ;
-+-----------+------------------+------------------+
-; Node Name ; Output Port Name ; Output Port Type ;
-+-----------+------------------+------------------+
++--------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                         ;
++---------------------------------------+---------------------------------------+------------------+
+; Node Name                             ; Output Port Name                      ; Output Port Type ;
++---------------------------------------+---------------------------------------+------------------+
+; |gimnasio|A                           ; |gimnasio|A                           ; out              ;
+; |gimnasio|MaquinaEstados:inst|inst12  ; |gimnasio|MaquinaEstados:inst|inst12  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst24  ; |gimnasio|MaquinaEstados:inst|inst24  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst29  ; |gimnasio|MaquinaEstados:inst|inst29  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst30  ; |gimnasio|MaquinaEstados:inst|inst30  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst14  ; |gimnasio|MaquinaEstados:inst|inst14  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst16  ; |gimnasio|MaquinaEstados:inst|inst16  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst21  ; |gimnasio|MaquinaEstados:inst|inst21  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst17  ; |gimnasio|MaquinaEstados:inst|inst17  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst47  ; |gimnasio|MaquinaEstados:inst|inst47  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst48  ; |gimnasio|MaquinaEstados:inst|inst48  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst64  ; |gimnasio|MaquinaEstados:inst|inst64  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst65  ; |gimnasio|MaquinaEstados:inst|inst65  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst92  ; |gimnasio|MaquinaEstados:inst|inst92  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst94  ; |gimnasio|MaquinaEstados:inst|inst94  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst93  ; |gimnasio|MaquinaEstados:inst|inst93  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst91  ; |gimnasio|MaquinaEstados:inst|inst91  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst148 ; |gimnasio|MaquinaEstados:inst|inst148 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst149 ; |gimnasio|MaquinaEstados:inst|inst149 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst150 ; |gimnasio|MaquinaEstados:inst|inst150 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst152 ; |gimnasio|MaquinaEstados:inst|inst152 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst166 ; |gimnasio|MaquinaEstados:inst|inst166 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst170 ; |gimnasio|MaquinaEstados:inst|inst170 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst185 ; |gimnasio|MaquinaEstados:inst|inst185 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst186 ; |gimnasio|MaquinaEstados:inst|inst186 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst195 ; |gimnasio|MaquinaEstados:inst|inst195 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst196 ; |gimnasio|MaquinaEstados:inst|inst196 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst218 ; |gimnasio|MaquinaEstados:inst|inst218 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst214 ; |gimnasio|MaquinaEstados:inst|inst214 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst213 ; |gimnasio|MaquinaEstados:inst|inst213 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst210 ; |gimnasio|MaquinaEstados:inst|inst210 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst227 ; |gimnasio|MaquinaEstados:inst|inst227 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst226 ; |gimnasio|MaquinaEstados:inst|inst226 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst222 ; |gimnasio|MaquinaEstados:inst|inst222 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst244 ; |gimnasio|MaquinaEstados:inst|inst244 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst242 ; |gimnasio|MaquinaEstados:inst|inst242 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst34  ; |gimnasio|MaquinaEstados:inst|inst34  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst49  ; |gimnasio|MaquinaEstados:inst|inst49  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst60  ; |gimnasio|MaquinaEstados:inst|inst60  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst61  ; |gimnasio|MaquinaEstados:inst|inst61  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst99  ; |gimnasio|MaquinaEstados:inst|inst99  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst98  ; |gimnasio|MaquinaEstados:inst|inst98  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst101 ; |gimnasio|MaquinaEstados:inst|inst101 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst100 ; |gimnasio|MaquinaEstados:inst|inst100 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst4   ; |gimnasio|MaquinaEstados:inst|inst4   ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst5   ; |gimnasio|MaquinaEstados:inst|inst5   ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst167 ; |gimnasio|MaquinaEstados:inst|inst167 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst220 ; |gimnasio|MaquinaEstados:inst|inst220 ; out0             ;
++---------------------------------------+---------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+-------------------------------------------------+
-; Missing 0-Value Coverage                        ;
-+-----------+------------------+------------------+
-; Node Name ; Output Port Name ; Output Port Type ;
-+-----------+------------------+------------------+
++--------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                         ;
++---------------------------------------+---------------------------------------+------------------+
+; Node Name                             ; Output Port Name                      ; Output Port Type ;
++---------------------------------------+---------------------------------------+------------------+
+; |gimnasio|A                           ; |gimnasio|A                           ; out              ;
+; |gimnasio|D2                          ; |gimnasio|D2                          ; pin_out          ;
+; |gimnasio|MaquinaEstados:inst|D2      ; |gimnasio|MaquinaEstados:inst|D2      ; regout           ;
+; |gimnasio|MaquinaEstados:inst|inst12  ; |gimnasio|MaquinaEstados:inst|inst12  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst24  ; |gimnasio|MaquinaEstados:inst|inst24  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst29  ; |gimnasio|MaquinaEstados:inst|inst29  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst30  ; |gimnasio|MaquinaEstados:inst|inst30  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst14  ; |gimnasio|MaquinaEstados:inst|inst14  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst16  ; |gimnasio|MaquinaEstados:inst|inst16  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst21  ; |gimnasio|MaquinaEstados:inst|inst21  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst17  ; |gimnasio|MaquinaEstados:inst|inst17  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst47  ; |gimnasio|MaquinaEstados:inst|inst47  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst48  ; |gimnasio|MaquinaEstados:inst|inst48  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst64  ; |gimnasio|MaquinaEstados:inst|inst64  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst65  ; |gimnasio|MaquinaEstados:inst|inst65  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst92  ; |gimnasio|MaquinaEstados:inst|inst92  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst94  ; |gimnasio|MaquinaEstados:inst|inst94  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst93  ; |gimnasio|MaquinaEstados:inst|inst93  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst91  ; |gimnasio|MaquinaEstados:inst|inst91  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst148 ; |gimnasio|MaquinaEstados:inst|inst148 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst149 ; |gimnasio|MaquinaEstados:inst|inst149 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst150 ; |gimnasio|MaquinaEstados:inst|inst150 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst152 ; |gimnasio|MaquinaEstados:inst|inst152 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst166 ; |gimnasio|MaquinaEstados:inst|inst166 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst170 ; |gimnasio|MaquinaEstados:inst|inst170 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst185 ; |gimnasio|MaquinaEstados:inst|inst185 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst186 ; |gimnasio|MaquinaEstados:inst|inst186 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst195 ; |gimnasio|MaquinaEstados:inst|inst195 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst196 ; |gimnasio|MaquinaEstados:inst|inst196 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst218 ; |gimnasio|MaquinaEstados:inst|inst218 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst214 ; |gimnasio|MaquinaEstados:inst|inst214 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst213 ; |gimnasio|MaquinaEstados:inst|inst213 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst210 ; |gimnasio|MaquinaEstados:inst|inst210 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst227 ; |gimnasio|MaquinaEstados:inst|inst227 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst226 ; |gimnasio|MaquinaEstados:inst|inst226 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst222 ; |gimnasio|MaquinaEstados:inst|inst222 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst244 ; |gimnasio|MaquinaEstados:inst|inst244 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst242 ; |gimnasio|MaquinaEstados:inst|inst242 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst34  ; |gimnasio|MaquinaEstados:inst|inst34  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst49  ; |gimnasio|MaquinaEstados:inst|inst49  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst60  ; |gimnasio|MaquinaEstados:inst|inst60  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst61  ; |gimnasio|MaquinaEstados:inst|inst61  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst99  ; |gimnasio|MaquinaEstados:inst|inst99  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst98  ; |gimnasio|MaquinaEstados:inst|inst98  ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst101 ; |gimnasio|MaquinaEstados:inst|inst101 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst100 ; |gimnasio|MaquinaEstados:inst|inst100 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst4   ; |gimnasio|MaquinaEstados:inst|inst4   ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst5   ; |gimnasio|MaquinaEstados:inst|inst5   ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst167 ; |gimnasio|MaquinaEstados:inst|inst167 ; out0             ;
+; |gimnasio|MaquinaEstados:inst|inst220 ; |gimnasio|MaquinaEstados:inst|inst220 ; out0             ;
++---------------------------------------+---------------------------------------+------------------+
 
 
 +---------------------+
@@ -175,18 +384,18 @@ The following table displays output ports that do not toggle to 0 during simulat
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Simulator
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Jun 08 17:27:36 2021
+    Info: Processing started: Sat Jun 12 12:58:54 2021
 Info: Command: quartus_sim --simulation_results_format=VWF gimnasio -c gimnasio
 Info (324025): Using vector source file "C:/Users/eduar/POO2021-1AELD/proyectoLogica/Waveform.vwf"
 Info (310003): Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info (310004): Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info (310002): Simulation partitioned into 1 sub-simulations
-Info (328053): Simulation coverage is     100.00 %
-Info (328052): Number of transitions in simulation is 324
+Info (328053): Simulation coverage is      73.96 %
+Info (328052): Number of transitions in simulation is 10733
 Info (324045): Vector file gimnasio.sim.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II 64-Bit Simulator was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 4440 megabytes
-    Info: Processing ended: Tue Jun 08 17:27:36 2021
+    Info: Processing ended: Sat Jun 12 12:58:54 2021
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:01
 

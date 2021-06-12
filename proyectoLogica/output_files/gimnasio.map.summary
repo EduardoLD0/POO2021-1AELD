@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Tue Jun 08 17:22:38 2021
+Analysis & Synthesis Status : Successful - Sat Jun 12 12:58:41 2021
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
 Revision Name : gimnasio
 Top-level Entity Name : gimnasio
 Family : Cyclone II
-Total logic elements : 7
-    Total combinational functions : 7
-    Dedicated logic registers : 6
-Total registers : 6
-Total pins : 8
+Total logic elements : 58
+    Total combinational functions : 58
+    Dedicated logic registers : 9
+Total registers : 9
+Total pins : 30
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0
